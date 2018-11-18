@@ -1,0 +1,25 @@
+
+ body{
+    background:steelblue;
+    font-family:"微軟正黑體";
+    font-weight:bold; 
+    font-size:17px;
+ }
+
+ container{
+    margin: 10px;
+   
+ }
+
+ .panel-body{
+    padding-left: 10%;    
+ }
+
+ .alert{
+    width: 80%;
+    font-size:12px;
+ }
+
+ .form-group{
+    width: 80%;
+ }

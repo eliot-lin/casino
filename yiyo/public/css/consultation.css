@@ -1,0 +1,156 @@
+.btn{font-size: 20px;}
+
+.navbar{
+    background-color: #F45B69;
+}
+
+.navbar-brand {
+    color:white;
+    text-align: center;
+}
+
+.bd-pageheader{
+    background-color:#456990
+}
+#comment {
+    width: 95%;
+}
+.consultMessage{
+    background:rgb(142, 185, 122);
+    float:right;
+    width:31.5%;
+    margin-right: 15px;
+    margin-top: 30px;
+    padding-left: 20px;
+    border-radius: 8px;
+    padding-top: 1px;
+}
+#functionBar{
+    margin-left: 45px;
+}
+
+#complainSystem{
+    padding-left: 20px;
+    background-color:rgb(250, 185, 34);
+    border-radius: 10px;    
+    height: 300px;
+    padding-top: 1px;
+    margin-top: 10px;
+    /* width: 600px; */
+}
+
+.cpTxtarea {
+    height: 200px;
+    width: 95%;
+    /* margin-top: 5px; */
+}
+
+#phraseForm{
+    background-color: skyblue;
+    z-index: 2;
+    position: fixed;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    top: 200px;
+    border: 2px solid;
+    border-radius: 25px;
+    padding: 15px;
+    display:none;
+}
+#MissionForm{
+    background-color: skyblue;
+    z-index: 2;
+    position: fixed;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    top: 200px;
+    border: 2px solid;
+    border-radius: 25px;
+    padding: 15px;
+    display:none;
+}
+#MissionForm2 {
+    z-index: 1; 
+    position: fixed; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    top: 0;
+    display:none;
+}
+#complainForm {
+    background-color: lavender;
+    z-index: 2;
+    position: fixed;
+    width: 80%;
+    height: 91%;
+    top: 60px;
+    left: 10%;
+    border: 2px solid;
+    border-radius: 25px;
+    padding: 15px;
+    overflow-y:scroll;
+    display:none;
+}
+
+.info{
+    align-content: right;
+    width: 450px;
+}
+.output{
+    align-content: right;
+    font-size: 20px;
+    width: 600px;
+}
+.text{
+    font-size: 20px;
+    width: 80px;
+    height: 30px;
+    color: black;
+    text-align: left;
+}
+.text2{
+    font-size: 20px;
+    width: 300px;
+    height: 30px;
+    color: black;
+    text-align: left;
+}
+ .title m-b-md{
+    width: 680px;
+    margin: 10px;
+ }
+ 
+ /* .CompleteVisitMission{
+    align-content: right;
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+ } */
+ /* .visit-table{
+    display: flex;
+    background: #FFFFFF;
+    margin: 10px;
+    border-style: groove;
+    width: 1650px;
+ } */
+ /* #space{
+    width: 150px;
+ } */
+
+ body{
+    background: white;
+    /* background: #E4FDE1; */
+    font-family: "微軟正黑體";
+    font-size:  17px;
+    font-weight:  bold;
+ }
+ th{
+    text-align: center;
+ }
+ 
+ tr{
+    text-align: center;
+ }

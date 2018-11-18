@@ -1,0 +1,166 @@
+#txtarea {
+    width: 1000px;
+    margin-top: 40px;
+    margin-right: 10px;
+    border:1px solid;
+    font-size:20px;
+}
+#output {
+    margin: 10px;
+    margin-left: 30px;
+}
+.container {
+    /* background: lavender; */
+}
+.test {
+    display: flex;
+}
+.flex {
+    display: flex;
+    margin-left: 20px;
+    margin-top: -40px;
+}
+.flex1{
+    height: 210px;
+    width: 800px;
+    margin-right: 20px;
+}
+.flex1 td:not(:empty){
+    background-color:rgb(174, 174, 238);    
+}
+.flex2 {
+    width: 500px;
+    height: 169px;    
+}
+.flex2 td:not(:empty){
+    background-color:rgb(74, 183, 216);        
+}
+.CompleteComplain {
+    font-size: 32px;
+    margin-bottom: 60px;
+}
+.cancel {
+    font-size: 32px;
+    margin-bottom: 60px;
+}
+.clear {
+    font-size: 32px;
+    margin-bottom: 60px;
+}
+
+body{
+    background-color:lavender;
+    font-family:"微軟正黑體";
+    font-weight:bold; 
+    font-size:17px;
+}
+
+a{
+    text-decoration:none;
+}
+th{
+    text-align:center;
+}
+tr{
+    text-align:center;
+}
+#midform td:not(:empty) {
+    cursor: pointer;
+    border:10px solid lavender; /* border的顏色 */
+}
+.flex td:not(:empty) {
+    cursor: pointer;
+    border:10px solid lavender; /* border的顏色 */
+}
+
+#tab1 {
+    width: 1000px;
+}
+#tab2 {
+    width: 700px;
+}
+#tab3 {
+    width: 450px;
+}
+#tab4 {
+    width: 450px;
+}
+#tab5 {
+    width: 550px;
+}
+#tab6 {
+    width: 450px;
+}
+#tab7 {
+    width: 550px;
+}
+#tab8 {
+    width: 550px;
+}
+#tab9 {
+    width: 700px;
+}
+
+
+ ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.button {
+    clear: left;
+    margin:20px;
+} 
+ul.tabs {
+    width: 736px;
+    height: 32px;
+    border-bottom: 1px solid #999;
+    /* border-left: 1px solid #999; */
+   
+} 
+ul.tabs li {
+    float: left;
+    height: 31px;
+    line-height: 31px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: -1px;	
+    border: 1px solid #999;
+    border-left:1px solid #999;
+    background: #e1e1e1;
+}
+ul.tabs li a {
+    display: block;
+    padding: 0 20px;
+    color: #000;
+    border: 1px solid #fff;
+    text-decoration: none;
+}
+ul.tabs li a:hover {
+    background: #ccc;
+}
+ul.tabs li.active  {
+    background: #fff;
+    border-bottom: 1px solid#fff;
+}
+ul.tabs li.active a:hover {
+    background: #fff;
+}
+div.tab_container {
+    border-top: none;
+    /* background: #fff; */
+    margin-left: -20px;
+}
+div.tab_container td:not(:empty) {
+    background: rgb(143, 211, 212);
+}
+div.tab_container td:empty {
+    border-top: none;
+    border-bottom: none;
+}
+div.tab_container .tab_content {
+    padding: 20px;
+}
+div.tab_container .tab_content h2 {
+    margin: 0 0 20px;
+} 

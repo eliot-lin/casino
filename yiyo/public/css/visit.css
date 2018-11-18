@@ -1,0 +1,80 @@
+.title {
+    text-align: center;
+    margin: 10px;
+    color: #2b1166;
+    border-style: outset;
+    width: 180px;
+}
+.footer{
+    width: 1150px;
+    margin: 10px;
+}
+.vip-info{
+    display: flex;
+}
+.info{
+    align-content: right;
+    width: 450px;
+}
+.output{
+    align-content: right;
+    font-size: 20px;
+    width: 600px;
+}
+.text{
+    font-size: 20px;
+    width: 80px;
+    height: 30px;
+    color: blue;
+    text-align: left;
+}
+.text2{
+    font-size: 20px;
+    width: 300px;
+    height: 30px;
+    color: blue;
+    text-align: left;
+}
+ .title m-b-md{
+    width: 680px;
+    margin: 10px;
+ }
+ .CompleteVisitMission{
+    align-content: right;
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+ }
+ .visit-table{
+    display: flex;
+    background: #FFFFFF;
+    margin: 10px;
+    border-style: groove;
+    width: 1650px;
+ }
+ .table-Dr{
+    width: 700px;
+    margin: 10px;
+    margin-right: 100px;
+ }
+ .table-NP{
+    width: 700px;
+    margin: 10px;
+    margin-left: 100px;
+ }
+ #space{
+    width: 150px;
+ }
+ body{
+    background: lavender;
+    font-family: "微軟正黑體";
+    font-size:  17px;
+    font-weight:  bold;
+ }
+ th{
+    text-align: center;
+ }
+ 
+ tr{
+    text-align: center;
+ }
