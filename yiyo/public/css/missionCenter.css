@@ -13,7 +13,13 @@ th{
 tr{
     text-align:center;
 }
-
+.vip-cell {
+    color: blue;
+    text-decoration:underline;
+}
+.vipPortrait { 
+    padding-left:100px;
+}
 #functionBar{
     margin-top: 10px;
     /* background-color: black; */
@@ -27,6 +33,10 @@ tr{
     background-color: rgba(0, 0, 0, 0.8); 
     top: 0;
 }
+#vipInfo{
+    width: 100%;
+}
+
 .mission-table {
     width: 90%;
 }
@@ -51,7 +61,7 @@ tr{
     flex-direction:column;
 }
 .info {
-    width: 50%;
+    width: 100%;
     margin-right: 50px;
     font-size: 16px;
 }
@@ -129,3 +139,10 @@ tr{
 .pastFinished {
     color:grey;
 }
+.main-menu { float:right; color:#FFFFFF; background-color:#666666; padding:5px; margin-bottom:5%; margin-right:2% ;  cursor:pointer; display:inline-block; } /* 主選單的樣式 */
+.main-menu:hover { background-color: grey; }
+.sub-menu { color: grey; background-color:#CCCCCC; margin:5px -5px; padding:0px; list-style-type:none; position:absolute; } /* 下拉清單的樣式 */
+.sub-menu li { padding: 3px 5px; text-align:left; } /* 下拉清單每一列的樣式 */
+.sub-menu li:hover { color:#FFFFFF; background-color:rgb(24, 1, 1); }
+.sub-menu a { text-align:left; display:block; text-decoration:none; color: whitesmoke; }
+.sub-menu a:hover { color:#FFFFFF; background-color: rgb(17, 5, 5); text-decoration:none; }

@@ -65,7 +65,7 @@ route::middleware('auth')->group(function () {
     });
 
     route::get('/profile/vip', function(){
-        return view('vip/vipinput');
+        return view('vips/vipinput');
     });
 
 
@@ -130,10 +130,10 @@ route::resource('cities', 'CitiesController');
 Route::resource('progresses', 'ProgressesController');
 
 // 醫師 app
-route::get('missions/doctorMission/{id}', 'MissionsController@doctorMission');
+// route::get('missions/doctorMission/{id}', 'MissionsController@doctorMission');
 
-// VIP app
-route::get('missions/vipMission/{id}', 'MissionsController@vipMission');
+// // VIP app
+// route::get('missions/vipMission/{id}', 'MissionsController@vipMission');
 
-// VIP get mission 
-route::get('progresses/mission/{id}', 'ProgressesController@getProgressByMissionID');   
+// // VIP get mission 
+// route::get('progresses/mission/{id}', 'ProgressesController@getProgressByMissionID');   

@@ -15,6 +15,13 @@
         <input id="messageUrl" type="hidden" value="{{url('call-center/message')}}">
         <input id="progressesUrl" type="hidden" value="{{ url('progresses/') }}">
 
+        <span class="main-menu" onmouseover="switchMenu( this, 'SubMenu1', 'MouseOver' )" onmouseout="hideMenu()"> 資料建檔 <span style="font-size:9px;">&#9660;</span>
+            <ul id="SubMenu1" class="sub-menu" style="display:none;">
+                <li><a id="vipProfile" target="_blank" href="/profile/vip">VIP</a></li>
+                <li><a id="medicalProfile" target="_blank" href="/profile/medical">醫療人員</a></li>
+            </ul>
+        </span>
+
         <div class="container mission-table">
             <h1 class="table-title">任務中心</h1>
             <table id="missionsTable" class="table table-hover">   
@@ -49,7 +56,7 @@
                 <button id="newMission" target="popup" class="btn btn-success">新增任務</button>
                 <button id="delteMission" class="btn btn-danger">刪除任務</button>
                 <button id="reviseMission" target="popup" class="btn btn-warning">修改任務</button>
-                <button id="refresh"  class="btn btn-info">重新整理</button>
+                <!-- <button id="refresh"  class="btn btn-info">重新整理</button> -->
             </div>
             
         </div>
@@ -60,7 +67,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="flex">
-                            <div class="flex flex-column">
+                            <div id="vipInfo" class="flex flex-column">
                                 <div class="flex">
                                     <div class="info">
                                         <b>姓名:</b>
@@ -72,6 +79,9 @@
                                         <b>年齡:</b>
                                         <span id="vipAge" class="vip-age"></span>
                                         <br>
+                                        <b>手機號碼:</b>
+                                        <span id="vipCell" class="vip-cell"></span>
+                                        <br>
                                         <b>婚姻:</b>
                                         <span id="vipMarital"></span>
                                     </div>
@@ -82,11 +92,13 @@
                                     <span id="vipAddress"></span>
                                 </div>
                             </div>
-                            <div class="flex flex-column vip-icon">
+                            <!-- <div class="flex flex-column vip-icon">
                                 <a href="#"><span class="glyphicon glyphicon-earphone icon-size"></span></a><br>
                                 <a href="#"><span class="glyphicon glyphicon-envelope icon-size"></span></a>
+                            </div> -->
+                            <div class="vipPortrait">
+                                <img id="vipPortrait" src="" class="img-rounded vip-image" alt="abei">
                             </div>
-                            <img id="vipPortrait" src="" class="img-rounded vip-image" alt="abei">
                         </div>
                     </div>
                 </div>
@@ -201,6 +213,9 @@
                                     <br>
                                     <b>年齡:</b>
                                     <span id="careAge" class="vip-age"></span>
+                                    <br>
+                                    <b>手機號碼:</b>
+                                    <span id="careCell" class="vip-cell"></span>
                                     <br>
                                     <b>婚姻:</b>
                                     <span id="careMarital"></span>

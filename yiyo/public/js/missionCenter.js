@@ -1,6 +1,9 @@
 $(document).ready(function(){
 
     var selected_missionID = 0;
+    // $("#vipProfile").click(function(){
+	// 	window.open='localhost/profile/vip';
+	// });
 
     $('#executorInfo').hide();
     $('#MissionForm2').hide();
@@ -287,6 +290,7 @@ $(document).ready(function(){
             }
         });
     }
+
     var getMission = function ($id)
     {
         $.ajax({
@@ -306,6 +310,7 @@ $(document).ready(function(){
                     $('.vip-info #vipSex').text(sex(mission.requester.sex));
                     $('.vip-info #vipAge').text(vipAge(mission.requester.birthday));
                     $('.vip-info #vipMarital').text(marital(mission.requester.marital_status));
+                    $('.vip-info #vipCell').text(mission.requester.cell);
                     $('.vip-info #vipAddress').text(mission.requester.address);
                     $('.vip-info #vipVisitAddress').text(mission.requester.member.address_visit);
                     $('.vip-info #vipSurgeryRec').text(mission.requester.member.medicine_records);
@@ -322,6 +327,7 @@ $(document).ready(function(){
                     $('.vip-info #vipSex').text(sex(mission.requester.sex));
                     $('.vip-info #vipAge').text(vipAge(mission.requester.birthday));
                     $('.vip-info #vipMarital').text(marital(mission.requester.marital_status));
+                    $('.vip-info #vipCell').text(mission.requester.cell);
                     $('.vip-info #vipAddress').text(mission.requester.address);
                     $('.vip-info #vipVisitAddress').text(mission.requester.member.address_visit);
                     $('.vip-info #vipSurgeryRec').text(mission.requester.member.medicine_records);
@@ -339,6 +345,7 @@ $(document).ready(function(){
                     $('.vip-info #vipSex').text(sex(mission.requester.sex));
                     $('.vip-info #vipAge').text(vipAge(mission.requester.birthday));
                     $('.vip-info #vipMarital').text(marital(mission.requester.marital_status));
+                    $('.vip-info #vipCell').text(mission.requester.cell);
                     $('.vip-info #vipAddress').text(mission.requester.address);
                     $('.vip-info #vipVisitAddress').text(mission.requester.member.address_visit);
                     $('.vip-info #vipSurgeryRec').text(mission.requester.member.medicine_records);
@@ -368,6 +375,7 @@ $(document).ready(function(){
                     $('.care-info #careName').text(mission.requester.name);
                     $('.care-info #careSex').text(sex(mission.requester.sex));
                     $('.care-info #careAge').text(vipAge(mission.requester.birthday));
+                    $('.care-info #careCell').text(mission.requester.cell);
                     $('.care-info #careMarital').text(marital(mission.requester.marital_status));
                     $('.care-info #careAddress').text(mission.requester.address);
                     $('.care-info #careVisitAddress').text(mission.requester.member.address_visit);
@@ -384,6 +392,7 @@ $(document).ready(function(){
                     $('.care-info #careName').text(mission.requester.name);
                     $('.care-info #careSex').text(sex(mission.requester.sex));
                     $('.care-info #careAge').text(vipAge(mission.requester.birthday));
+                    $('.care-info #careCell').text(mission.requester.cell);
                     $('.care-info #careMarital').text(marital(mission.requester.marital_status));
                     $('.care-info #careAddress').text(mission.requester.address);
                     $('.care-info #careVisitAddress').text(mission.requester.member.address_visit);
@@ -401,6 +410,7 @@ $(document).ready(function(){
                     $('.care-info #careName').text(mission.requester.name);
                     $('.care-info #careSex').text(sex(mission.requester.sex));
                     $('.care-info #careAge').text(vipAge(mission.requester.birthday));
+                    $('.care-info #careCell').text(mission.requester.cell);
                     $('.care-info #careMarital').text(marital(mission.requester.marital_status));
                     $('.care-info #careAddress').text(mission.requester.address);
                     $('.care-info #careVisitAddress').text(mission.requester.member.address_visit);
@@ -614,6 +624,7 @@ $(document).ready(function(){
         if($sex == 2)
             return "女";
     }
+
    
     function vipAge($string)
     {
@@ -723,10 +734,15 @@ $(document).ready(function(){
     countConcernAge();
 
     $('#delteMission').click(function(){
-        console.log('MID' + selected_missionID);
-        deletMission(selected_missionID);
-        // $('#missionsTable').DataTable().clear();
-        // getMissionList();
+        if($('input[id^=choose]:checked').val() != undefined)
+        {
+            console.log('MID' + selected_missionID);
+            deletMission(selected_missionID);
+            // $('#missionsTable').DataTable().clear();
+            // getMissionList();
+        }
+        else
+            alert("Error!請選擇任務或VIP!");
     });
   
 });
@@ -739,6 +755,7 @@ var deletMission = function($id){
         contentType: 'application/json',
         success: function(response){
             console.log('delete success');
+            alert("資料刪除成功！");
             $('#missionsTable').DataTable().clear();
             getMissionList();
         },
@@ -886,6 +903,32 @@ var getMissionPage = function($id){
      });//end
  }
 
+ var VisibleMenu = ''; // 記錄目前顯示的子選單的 ID
+
+ // 顯示或隱藏子選單
+ function switchMenu( theMainMenu, theSubMenu, theEvent ){
+     var SubMenu = document.getElementById( theSubMenu );
+     if( SubMenu.style.display == 'none' ){ // 顯示子選單
+         SubMenu.style.minWidth = theMainMenu.clientWidth; // 讓子選單的最小寬度與主選單相同 (僅為了美觀)
+         SubMenu.style.display = 'block';
+         hideMenu(); // 隱藏子選單
+         VisibleMenu = theSubMenu;
+     }
+     else{ // 隱藏子選單
+         if( theEvent != 'MouseOver' || VisibleMenu != theSubMenu ){
+             SubMenu.style.display = 'none';
+             VisibleMenu = '';
+         }
+     }
+ }
+ 
+ // 隱藏子選單
+ function hideMenu(){
+     if( VisibleMenu != '' ){
+         document.getElementById( VisibleMenu ).style.display = 'none';
+     }
+     VisibleMenu = '';
+ }
 
  var missionTypeButtonClass = function($type)
  {

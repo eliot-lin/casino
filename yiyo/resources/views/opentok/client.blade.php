@@ -6,11 +6,7 @@
     <script src="https://static.opentok.com/v2/js/opentok.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ URL::asset('js/helloworld.js') }}"></script>
-<<<<<<< HEAD
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-=======
     <!-- <meta name="csrf-token" content="{{ csrf_token() }}" /> -->
->>>>>>> 817763243d4c6943901c2e19bdf8f6a25aa81fff
     <script type="text/javascript">
 
         $( document ).ready(function() {

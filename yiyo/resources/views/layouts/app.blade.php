@@ -10,14 +10,14 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,600">
         @section('css')
         @show
-        <title>益友網 - @yield('title')</title>
+        <title>醫療系統 - @yield('title')</title>
     </head>
 
     <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">益友網</a>
+                    <!-- <a class="navbar-brand" href="#">益友網</a> -->
                 </div>
                 <ul class="nav navbar-nav">
                     @if (Auth::check())
