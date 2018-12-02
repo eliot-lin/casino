@@ -112,6 +112,7 @@ route::middleware('auth')->group(function () {
     Route::get('divisions/div', 'DivisionsController@index');
     Route::get('hospitals/getHospitals', 'HospitalsController@getHospitals');
     Route::get('hospitals/getPastHospital', 'UsersController@getHistoriesByUser');
+    Route::get('hospitals/findHospital', 'HospitalsController@findHospital');
     route::post('missions/complete', 'MissionsController@complete');
     route::post('missions/message', 'MessagesController@createMessage');
 });

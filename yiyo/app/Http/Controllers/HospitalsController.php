@@ -89,4 +89,13 @@ class HospitalsController extends Controller
         Hospital::findOrFail($id)->delete();
         return response()->json(['status' => 'ok', 'message' => 'delete success']);
     }
+    public function findHospital(Request $request)
+    {
+        $hospital = Hospital::where('name', "123")->get(); 
+        $hospitals = Hospital::create(collect($request)->only([
+            'hospital',
+        ])->toArray());
+        dd($request);
+        return response()->json($hospital);
+    }
 }

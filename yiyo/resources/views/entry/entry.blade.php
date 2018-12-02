@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>健康益友網</title>
+        <title>醫療資訊網</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -68,8 +68,8 @@
 					<div class="home-wrapper">
 						<div class="col-sm-6 col-xs-12">
 							<div class="home-content">
-								<h1><strong>健康益友網</strong></h1>
-								<p>加入益友網享受最貼心的照顧</p>
+								<h1><strong>醫療資訊網</strong></h1>
+								<p>加入醫療資訊網享受最貼心的照顧</p>
 								<div class="more">
 									<a href="#">立即加入</a>
 								</div>
@@ -101,17 +101,17 @@
 					
                     	<div class="col-sm-4 col-xs-12">
                     		<div class="features-icon">
-								<i class="fa fa-pencil"></i>
+								<!-- <i class="fa fa-pencil"></i> -->
 							</div>
                     		<div class="about-content">
                     			<h5>代掛號<span><i class="fa fa-long-arrow-right"></i></span></h5>
-                    			<p>生活忙碌找不到時間到複雜的醫院網站掛號，又不知道自己該掛哪一科。您的健康交給健康益友網俱樂部為您把關！</p>
+                    			<p>生活忙碌找不到時間到複雜的醫院網站掛號，又不知道自己該掛哪一科。您的健康交給醫療資訊網為您把關！</p>
                     		</div>
                     	</div>
 						
 						<div class="col-sm-4 col-xs-12">
 							<div class="features-icon">
-								<i class="fa fa-pencil"></i>
+								<!-- <i class="fa fa-pencil"></i> -->
 							</div>
                     		<div class="about-content">
                     			<h5>線上諮詢<span><i class="fa fa-long-arrow-right"></i></span></h5>
@@ -121,7 +121,7 @@
 						
 						<div class="col-sm-4 col-xs-12">
 							<div class="features-icon">
-								<i class="fa fa-pencil"></i>
+								<!-- <i class="fa fa-pencil"></i> -->
 							</div>
                     		<div class="about-content">
                     			<h5>陪診<span><i class="fa fa-long-arrow-right"></i></span></h5>
@@ -184,11 +184,11 @@
             </div> <!-- /container -->       
         </section>
 		
-		<!-- Sections -->
-        <section id="achivement" class="achivement">
+		
+        <!-- <section id="achivement" class="achivement">
 			<div class="overlay sections">
 				<div class="container">
-					<!-- Example row of columns -->
+					
 					<div class="row">
 						<div class="achivement-wrapper">
 							<div class="col-sm-8 col-xs-12">
@@ -209,11 +209,11 @@
 					</div>
 					
 					
-				</div> <!-- /container -->
+				</div> 
 			</div>		
-        </section>
+        </section> -->
 		
-		<section id="counterup" class="counterup lightbg sections">
+		<!-- <section id="counterup" class="counterup lightbg sections">
 			<div class="container">
 				<div class="row">
 						<div class="counterup-wrapper">
@@ -269,7 +269,7 @@
 					</div>
 			</div>
 		</section>
-		
+		 -->
 		
 		<!-- Sections -->
        <!--  <section id="team" class="team sections">
@@ -582,33 +582,33 @@
             <div class="container">
 			
                 <!-- Example row of columns -->
-                <div class="row">
+                <!-- <div class="row">
 					<div class="col-sm-10 col-sm-offset-1 col-xs-12">
 						<div class="contact-wrapper text-center">
 							<div class="col-sm-4 col-xs-12">
-								<div class="contact-details">
-									<i class="fa fa-paper-plane"></i>
-									<p>cindy@oriact.com.tw</p>
+								<div class="contact-details"> -->
+									<!-- <i class="fa fa-paper-plane"></i> -->
+									<!-- <p>cindy@oriact.com.tw</p>
 								</div>
 							</div>
 							
 							<div class="col-sm-4 col-xs-12">
-								<div class="contact-details">
-									<i class="fa fa-map-marker"></i>
-									<p>103大同區民權西路106號</p>
+								<div class="contact-details"> -->
+									<!-- <i class="fa fa-map-marker"></i> -->
+									<!-- <p>103大同區民權西路106號</p>
 								</div>
 							</div>
 							
 							<div class="col-sm-4 col-xs-12">
-								<div class="contact-details">
-									<i class="fa fa-phone"></i>
-									<p>02-2552-8787</p>
+								<div class="contact-details"> -->
+									<!-- <i class="fa fa-phone"></i> -->
+									<!-- <p>02-2552-8787</p>
 								</div>
 							</div>
 							
 						</div>
 					</div>	
-                </div>
+                </div> -->
             </div> <!-- /container -->       
         </section>
 		

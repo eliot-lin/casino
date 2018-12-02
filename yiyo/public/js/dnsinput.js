@@ -12,6 +12,38 @@ $(document).ready(function(){
 	// 	document.form1.cell_phone.focus(); 
 	// 	return false; 
 	// } 
+	var getHospitalsByRegion = function (no)
+    {
+        $.ajax({
+            url: $('#getHospitalsByRegion').val(),
+            data: {'no': no},
+            type: 'get',
+            contentType: 'application/json',
+            success: function (region)
+            {
+                var hospitalsOptions = [];
+                $(region.cities).each(function (i, city) {
+                    $(city.hospitals).each(function (index, hospital) {
+                        hospitalsOptions.push('<option value=' + hospital.id + '>' + hospital.name + '</option>');
+                    });
+				});
+				
+                $('#hospitalSelector').html(hospitalsOptions.join(''));
+
+            },
+            error: function()
+            {
+                console.log('error');
+            }
+        });
+    }
+
+    $('#regionSelector').change(function () {
+        getHospitalsByRegion($(this).val());
+    });
+    
+	getHospitalsByRegion('N'); // 預設值
+	
 
 	$("#userid").change(function(){
 		var reg = /^[A-Z]{1}[1-2]{1}[0-9]{8}$/;
@@ -40,43 +72,46 @@ $(document).ready(function(){
 		// validate() ;
 	});
 
+	
+
 	$("#sub").click(function(){
 	
-		var pro_type    = $('#inputVocation:checked').val();
-		var relationship  = $('#inputCooperationRelationship:checked').val();
-		var hierarchy   = $('#inputHierarchy:checked').val();
-		var service_hostpital = $("#inputHospitalName").val(); 
-
+		var pro_type    = $('.inputVocation:checked').val();
+		var relationship  = $('.inputCooperationRelationship:checked').val();
+		console.log(relationship); 
+		// var hierarchy   = $('.inputHierarchy:checked').val();
+		var service_hostpital = $("#hospitalSelector").val(); 
+		
         var name  = $("#inputDNSName").val(); 
         var cell  = $("#inputDNSCellPhone").val(); 
         var id_no  = $("#inputIDNumber").val(); 
         var email_first = $("#inputDNSEmail").val(); 
-        var email_second = $("#inputDNSEmail").val(); 
+        // var email_second = $("#inputDNSEmail").val(); 
 
 		var education   = $('#radioEducation:checked').val();
 
 		//option
 		var country = $("#country").val();
 		
-		var zone=[];
-	    $('input[name=zone]:checked').each(function () {
-		  zone.push($(this).val());
-		});
+		// var zone=[];
+	    // $('input[name=zone]:checked').each(function () {
+		//   zone.push($(this).val());
+		// });
 
-		var lang=[];
-	    $('input[name=lang]:checked').each(function () {
-		  lang.push($(this).val());
-		});
+		// var lang=[];
+	    // $('input[name=lang]:checked').each(function () {
+		//   lang.push($(this).val());
+		// });
 
-	    var time=[];
-	    $('input[name=time]:checked').each(function () {
-		  time.push($(this).val());
-		});
+	    // var time=[];
+	    // $('input[name=time]:checked').each(function () {
+		//   time.push($(this).val());
+		// });
 
-		result = zone.toString();
-		//console.log( result ); 		
+		// result = zone.toString();
+		// //console.log( result ); 		
 
-		result2 = lang.toString();
+		// result2 = lang.toString();
 		//console.log( result2 ); 		
 
 		var department_first = $("#department").val();
@@ -91,31 +126,46 @@ $(document).ready(function(){
 
 
 
+		var tell  = $("#formInputTell").val(); 
+		var oTell  = $("#formInputOTell").val(); 
+		
+        var sex = $('.radioSex:checked').val();
+
 		var dns = new Object();
 		//dns attribute
-		dns.pro_type = pro_type;		//            $table->tinyInteger('pro_type')->default(0);
+		dns.occupation_id = pro_type;		//            $table->tinyInteger('pro_type')->default(0);
 		dns.relationship = relationship;//     $table->tinyInteger('relationship')->default(0);
-		dns.hierarchy = hierarchy;		//            $table->tinyInteger('hierarchy')->default(2);
-		dns.service_hostpital = service_hostpital;// $table->string('serve_hospital', 40)->default('')->nullable();
-		dns.time = time;				//         $table->text('contact_times')->nullable();
-		dns.zone = zone;				// 補上 database
+		// dns.hierarchy = hierarchy;		//            $table->tinyInteger('hierarchy')->default(2);
+		dns.hospital_id = service_hostpital;// $table->string('serve_hospital', 40)->default('')->nullable();
+		
+		// dns.time = time;				//         $table->text('contact_times')->nullable();
+		// dns.zone = zone;				// 補上 database
 
 		//member attribute
-		dns.name = name;
-		dns.cell = cell;
-		dns.department_first = department_first;	//$table->string('department_first', 40)->default('')->nullable();
-		dns.department_second = department_second;  //$table->string('department_second', 40)->default('')->nullable();
-		dns.email_first = email_first;
-		dns.education = education;
-		dns.country = country;
-		dns.birthday = birthday;
-		dns.addr = addr;
-		dns.mariage = mariage;
-		dns.id_no = id_no;
+		dns.division_main_id = department_first;	//$table->string('department_first', 40)->default('')->nullable();
+		dns.division_vice_id = department_second;  //$table->string('department_second', 40)->default('')->nullable();
+
+
+		var user = new Object();
+
+		user.type = "medical";
+		user.email_main = email_first;
+		user.password = id_no;
+		user.id_no = id_no;
+		user.password = id_no;
+		user.name = name;
+		user.cell = cell;
+		user.tel_home = tell;
+		user.tel_office = oTell;
+		user.sex = sex;
+		user.birthday = birthday;
+		user.education = education; 
+		user.marital_status = mariage;
+		user.address = addr;
 
 		$.ajax({
 	        type: 'POST',
-	        url: '/dnss',
+	        url: '/medicals',
 	        data: dns,
 	        headers: {
 		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -126,7 +176,24 @@ $(document).ready(function(){
 		    	console.log(dns);
 		    	// console.log(results);
 		    }
-    	});
+		});
+
+		$.ajax({
+			type: 'POST',
+			url: '/users',
+			data: user,
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+			success: function(results)
+			{
+				console.log(user);
+				alert("完成，建立下一筆資料。");
+				// location.reload();
+				console.log(results);
+			}
+		});
+		
     });
 });
 

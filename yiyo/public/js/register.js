@@ -188,6 +188,7 @@
             // case 0:
         updateMission($('#missionId').val() , {
             'status_id':  2 ,   // 1 待執行  2 執行中  3 完成
+            'status_name': "執行中"
         } );
         //         break;
         //     case 1:
@@ -527,6 +528,7 @@
                     'status_id': 6,//未處理
                     'issued_at': new Date().getTime() / 1000,
                     'vip_id': $('#vips_id').val(),
+                    
                 }),
                 type: 'post',
                 async: false,

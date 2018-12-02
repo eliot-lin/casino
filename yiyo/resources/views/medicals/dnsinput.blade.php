@@ -12,6 +12,7 @@
       <script type="text/javascript" src="{{ URL::asset('js/dnsinput.js') }}"></script>
       <link rel="stylesheet" href="{{ asset('css/medicalinput.css') }}">
       <meta name="csrf-token" content="{{ csrf_token() }}" />
+      <input id = "getHospitalsByRegion" type="hidden" value="{{ url('hospitals/get-hospitals-by-region') }}">
     </head>
     <body>
         <div class="container">
@@ -29,16 +30,16 @@
                 <div class="panel-body">
 
                     <div class="form-group">
-                        <label for="inputVocation">職業</label>
+                        <label for="inputVocation">*職業</label>
                             
                             <div class="custom-controls-stacked">
                                 <label class="custom-control custom-radio">
-                                      <input id="inputVocation" name="radio-vocational" value="0" type="radio" class="custom-control-input">
+                                      <input class="inputVocation" name="radio-vocational" value="1" type="radio" class="custom-control-input" required>
                                       <span class="custom-control-indicator"></span>
                                       <span class="custom-control-description">醫師</span>
                                 </label>
                                 <label class="custom-control custom-radio">
-                                      <input id="inputVocation" name="radio-vocational" value="1" type="radio" class="custom-control-input">
+                                      <input class="inputVocation" name="radio-vocational" value="2" type="radio" class="custom-control-input">
                                       <span class="custom-control-indicator"></span>
                                       <span class="custom-control-description">NP</span>
                                 </label>
@@ -46,20 +47,16 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputRelationship">合作關係</label>
+                        <label for="inputRelationship">*合作關係</label>
                             <div class="custom-controls-stacked">
                                 <label class="custom-control custom-radio">
-                                      <input id="inputCooperationRelationship" name="radio-cooperation" value="0" type="radio" class="custom-control-input">
+                                      <input class="inputCooperationRelationship" name="radio-cooperation" value="合約" type="radio" class="custom-control-input" required>
                                       <span class="custom-control-indicator"></span>
                                       <span class="custom-control-description">簽約</span>
                                 </label>
-                                <label class="custom-control custom-radio">
-                                      <input id="inputCooperationRelationship" name="radio-cooperation" value="1" type="radio" class="custom-control-input">
-                                      <span class="custom-control-indicator"></span>
-                                      <span class="custom-control-description">合作</span>
                                 </label>
                                 <label class="custom-control custom-radio">
-                                      <input id="inputCooperationRelationship" name="radio-cooperation" value="2" type="radio" class="custom-control-input">
+                                      <input class="inputCooperationRelationship" name="radio-cooperation" value="友好" type="radio" class="custom-control-input">
                                       <span class="custom-control-indicator"></span>
                                       <span class="custom-control-description">友好</span>
                                 </label>
@@ -67,11 +64,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputServiceTime">簽約服務內容</label>
+                        <label for="inputServiceTime">*簽約服務內容</label>
                         <p></p>
                            <form>
                                 <label class="checkbox-inline">
-                                  <input type="checkbox" name="time" value="consult">諮詢
+                                  <input type="checkbox" name="time" value="consult" required>諮詢
                                 </label>
                                 <label class="checkbox-inline">
                                   <input type="checkbox" name="time" value="consult">代掛號
@@ -87,60 +84,73 @@
                     </div>
 
                     <div class="form-group">
-                           <label for="inputHospitalName" >服務醫院</label>
-                            <input type="text" class="form-control"  id="inputHospitalName" placeholder="輸入服務醫院"> 
+                           <label for="inputHospitalName" >*服務醫院</label><br>
+                           地區 : 
+                              <select id="regionSelector" class="input">
+                                <option value="N">北部</option>
+                                <option value="C">中部</option>
+                                <option value="S">南部</option>
+                                <option value="E">東部</option>
+                              </select>
+
+                            醫院 : 
+                                <select name="member" id="hospitalSelector" class="input">
+                                    <option value="">請先選取地區
+                                </select>
+                                <!-- <br><br>日期 :  <input id="date" class="Time" type="date"> -->
+                            <!-- <input type="text" class="form-control"  id="inputHospitalName" placeholder="輸入服務醫院">  -->
                     </div>
 
                     <div class="form-group">
-                        <label for="inputDepartment">科別</label>
-                        <select class="form-control" id="department">
-                          <option value="00">不分科</option>
-                          <option value="01">家醫科</option>
-                          <option value="02">內科</option>
-                          <option value="03">外科</option>
-                          <option value="04">小兒科</option>
-                          <option value="05">婦產科</option>
-                          <option value="06">骨科</option>
-                          <option value="07">神經外科</option>
-                          <option value="08">泌尿科</option>
-                          <option value="09">耳鼻喉科</option>
-                          <option value="10">眼科</option>
-                          <option value="11">皮膚科</option>
-                          <option value="12">神經科</option>
-                          <option value="13">精神科</option>
-                          <option value="14">復健科</option>
-                          <option value="15">整形外科</option>
+                        <label for="inputDepartment">*科別</label>
+                        <select class="form-control" id="department" required>
+                          <option value="1">不分科</option>
+                          <option value="2">家醫科</option>
+                          <option value="3">內科</option>
+                          <option value="4">外科</option>
+                          <option value="5">小兒科</option>
+                          <option value="6">婦產科</option>
+                          <option value="7">骨科</option>
+                          <option value="8">神經外科</option>
+                          <option value="9">泌尿科</option>
+                          <option value="10">耳鼻喉科</option>
+                          <option value="11">眼科</option>
+                          <option value="12">皮膚科</option>
+                          <option value="13">神經科</option>
+                          <option value="14">精神科</option>
+                          <option value="15">復健科</option>
+                          <option value="16">整形外科</option>
                         </select>
                     </div>
 
                      <div class="form-group">
                         <label for="inputDepartment2">科別二</label>
                         <select class="form-control" id="department2">
-                          <option value="00">不分科</option>
-                          <option value="01">家醫科</option>
-                          <option value="02">內科</option>
-                          <option value="03">外科</option>
-                          <option value="04">小兒科</option>
-                          <option value="05">婦產科</option>
-                          <option value="06">骨科</option>
-                          <option value="07">神經外科</option>
-                          <option value="08">泌尿科</option>
-                          <option value="09">耳鼻喉科</option>
-                          <option value="10">眼科</option>
-                          <option value="11">皮膚科</option>
-                          <option value="12">神經科</option>
-                          <option value="13">精神科</option>
-                          <option value="14">復健科</option>
-                          <option value="15">整形外科</option>
+                        <option value="1">不分科</option>
+                          <option value="2">家醫科</option>
+                          <option value="3">內科</option>
+                          <option value="4">外科</option>
+                          <option value="5">小兒科</option>
+                          <option value="6">婦產科</option>
+                          <option value="7">骨科</option>
+                          <option value="8">神經外科</option>
+                          <option value="9">泌尿科</option>
+                          <option value="10">耳鼻喉科</option>
+                          <option value="11">眼科</option>
+                          <option value="12">皮膚科</option>
+                          <option value="13">神經科</option>
+                          <option value="14">精神科</option>
+                          <option value="15">復健科</option>
+                          <option value="16">整形外科</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="inputServiceTime">服務時間</label>
+                        <label for="inputServiceTime">*服務時間</label>
                         <p></p>
                            <form>
                                 <label class="checkbox-inline">
-                                  <input type="checkbox" name="time" value="sun">日
+                                  <input type="checkbox" name="time" value="sun" required>日
                                 </label>
                                 <label class="checkbox-inline">
                                   <input type="checkbox" name="time" value="mon">一
@@ -160,30 +170,55 @@
                                 <label class="checkbox-inline">
                                   <input type="checkbox" name="time" value="sat">六
                                 </label>
-                                <span class="help-block">可複選(修改請至排班系統)</span>
+                                <span class="help-block">可複選</span>
                            </form>
                     </div>
                   
                     <div class="form-group">
-                           <label for="inputDNSName" >姓名</label>
-                            <input type="text" class="form-control"  id="inputDNSName" placeholder="輸入姓名"> 
+                           <label for="inputDNSName" >*姓名</label>
+                            <input type="text" class="form-control"  id="inputDNSName" placeholder="輸入姓名" required> 
                     </div>
 
                     <div class="form-group">
-                        <label for="inputDNSCellPhone" >手機</label>
-                            <input id="cell" type="text" class="form-control" id="inputDNSCellPhone" placeholder="輸入手機"> 
+                      <label for="inputSex">*性別</label>
+                         <div class="custom-controls-stacked" >
+                            <label class="custom-control custom-radio">
+                                  <input class="radioSex" name="radio-sex" value="0" type="radio" class="custom-control-input" required>
+                                  <span class="custom-control-indicator"></span>
+                                  <span class="custom-control-description">女生</span>
+                            </label>
+                            <label class="custom-control custom-radio">
+                                  <input class="radioSex" name="radio-sex" value="1" type="radio" class="custom-control-input">
+                                  <span class="custom-control-indicator"></span>
+                                  <span class="custom-control-description">男生</span>
+                            </label>
+                          </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputDNSCellPhone" >*手機</label>
+                            <input type="text" class="form-control" id="inputDNSCellPhone" placeholder="輸入手機" required> 
                     </div>
                     <div class="alert alert-success alert-success-cell" style="display:none;">
                         <strong>通過!</strong> 手機格式正確！
                     </div>
-
                     <div class="alert alert-danger alert-danger-cell" style="display:none;">
                         <strong>錯誤!</strong> 手機格式輸入有誤！
                     </div>
+                    <div class="form-group">
+                        <label>家裡電話</label>
+                            <input type="text" class="form-control" id="formInputTell" placeholder="輸入家裡電話" required> 
+                    </div>
 
                     <div class="form-group">
-                        <label for="IDNumber" >身份證</label>
-                            <input id="userid" type="text" class="form-control" id="inputIDNumber" placeholder="輸入身分證字號"> 
+                        <label>公司電話</label>
+                            <input type="text" class="form-control" id="formInputOTell" placeholder="輸入公司電話" required> 
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="IDNumber" >*身份證</label>
+                            <input id="userid" type="text" class="form-control" id="inputIDNumber" placeholder="輸入身分證字號" required> 
                     </div>
 
                     <div class="alert alert-success alert-success-userid" style="display:none;">
@@ -195,8 +230,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputDNSEmail">Email</label>
-                            <input id="email" type="email" class="form-control" id="inputDNSEmail" placeholder="輸入Email">
+                        <label for="inputDNSEmail">*Email</label>
+                            <input type="email" class="form-control" id="inputDNSEmail" placeholder="輸入Email" required>
                         <span id='result' class="help-block"></span>
                     </div>
 
@@ -212,7 +247,7 @@
                         <label for="inputGender">學歷</label>
                        <div class="custom-controls-stacked">
                           <label class="custom-control custom-radio">
-                                <input id="radioEducation" name="radio-education" value="0" type="radio" class="custom-control-input">
+                                <input id="radioEducation" name="radio-education" value="0" type="radio" class="custom-control-input" required>
                                 <span class="custom-control-indicator"></span>
                                 <span class="custom-control-description">學士</span>
                           </label>
@@ -239,11 +274,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputServiceArea">服務地區</label>
+                        <label for="inputServiceArea">*服務地區</label>
                         <p></p>
                            <form>
                                 <label class="checkbox-inline">
-                                  <input id="serviceZone" name="zone" type="checkbox" value="tpe">台北
+                                  <input id="serviceZone" name="zone" type="checkbox" value="tpe" required>台北
                                 </label>
                                 <label class="checkbox-inline">
                                   <input id="serviceZone" name="zone" type="checkbox" value="tyn">桃園
@@ -289,14 +324,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="inputAddr">地址</label>
-                            <input type="text" class="form-control" id="inputAddr" placeholder="地址">
+                        <label for="inputAddr">*地址</label>
+                            <input type="text" class="form-control" id="inputAddr" placeholder="地址" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="inputDate">生日</label>
+                        <label for="inputDate">*生日</label>
                             <div>
-                                <input class="form-control" type="date" id="birthday" name="bday" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}">
+                                <input class="form-control" type="date" id="birthday" name="bday" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required>
                                 <span class="validity"></span>
                             </div>
                     </div>
@@ -305,12 +340,12 @@
                         <label for="inputMariage">婚姻</label>
                             <div class="custom-controls-stacked">
                                 <label class="custom-control custom-radio">
-                                      <input id="radioMariage" name="radio-mariage" value="married" type="radio" class="custom-control-input">
+                                      <input id="radioMariage" name="radio-mariage" value="0" type="radio" class="custom-control-input" >
                                       <span class="custom-control-indicator"></span>
                                       <span class="custom-control-description">已婚</span>
                                 </label>
                                 <label class="custom-control custom-radio">
-                                      <input id="radioMariage" name="radio-mariage" value="single" type="radio" class="custom-control-input">
+                                      <input id="radioMariage" name="radio-mariage" value="1" type="radio" class="custom-control-input">
                                       <span class="custom-control-indicator"></span>
                                       <span class="custom-control-description">單身</span>
                                 </label>
@@ -322,7 +357,7 @@
                         <p></p>
                            <form>
                                 <label class="checkbox-inline">
-                                  <input type="checkbox" name="lang" value="mandarin">國語
+                                  <input type="checkbox" name="lang" value="mandarin" required>國語
                                 </label>
                                 <label class="checkbox-inline">
                                   <input type="checkbox" name="lang" value="minnan">閩南語
@@ -344,7 +379,7 @@
                     </div>
                     
                     <div class="form-group">
-                      <button id="sub" type="button" class="btn btn-success">提交</button>
+                        <button id="sub" type="submit" class="pure-button pure-button-primary">提交</button>
                     </div>
 
                     

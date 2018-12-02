@@ -21,6 +21,12 @@ class UsersController extends Controller
         return response()->json($users);
     }
 
+    public function new()
+    {
+        $user = User::all();
+        return response()->json($user);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,7 +45,8 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create($request->all());
+        return response()->json(['status' => 'ok', 'message' => 'store success', 'data' => $user]);
     }
 
     /**
