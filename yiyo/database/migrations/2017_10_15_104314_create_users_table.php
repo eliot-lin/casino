@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
             $table->text('portrait')->nullable();
             $table->double('score')->default(0);
             $table->string('cell',40)->default('');
-            $table->string('tel_home',40)->default('');
-            $table->string('tel_office',40)->default('');
+            $table->string('tel_home',40)->nullable()->default('');
+            $table->string('tel_office',40)->nullable()->default('');
             $table->tinyInteger('sex')->default(0);
             $table->string('passport',40)->default('');
             $table->string('birthday', 10)->default('');

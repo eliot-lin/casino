@@ -135,10 +135,10 @@ $(document).ready(function(){
 		console.log(user);
 
 		
-		if(name == null || cell == null || tell == null || oTell == null || id_no == null 
-			|| email_first == null || sex == null || height == null || weight == null
-			|| occupation == null || blood == null || addr == null || birthday == null || marital_status == null || religion == null
-			|| uname == null || ucell == null || urelation == null || uaddr == null || disabilites == null) {
+		if(name == '' || cell == '' || tell == '' || oTell == '' || id_no == '' 
+			|| email_first == '' || sex == '' || height == '' || weight == ''
+			|| occupation == '' || blood == '' || addr == '' || birthday == '' || marital_status == '' || religion == ''
+			|| uname == '' || ucell == '' || urelation == '' || uaddr == '' || disabilites == '') {
 				bool = false;
 		 }
 		 else  {
@@ -147,22 +147,6 @@ $(document).ready(function(){
 
 
 		if(bool) {
-				$.ajax({
-					type: 'POST',
-					url: '/vips',
-					data: vip,
-					headers: {
-						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-					},
-					success: function(results)
-					{
-						alert("完成，建立下一筆資料。");
-						console.log(vip);
-						// location.reload();
-						console.log(results);
-					}
-				});
-
 				$.ajax({
 					type: 'POST',
 					url: '/users',
@@ -176,6 +160,28 @@ $(document).ready(function(){
 						alert("完成，建立下一筆資料。");
 						// location.reload();
 						console.log(results);
+						
+						vip.user_id = results.data.id;
+
+						$.ajax({
+							type: 'POST',
+							url: '/vips',
+							data: vip,
+							headers: {
+								'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+							},
+							success: function(results)
+							{
+								alert("完成，建立下一筆資料。");
+								console.log(vip);
+								// location.reload();
+								console.log(results);
+							},
+							error:function()
+							{
+								console.log("error");
+							}
+						});
 					}
 				});
 		}

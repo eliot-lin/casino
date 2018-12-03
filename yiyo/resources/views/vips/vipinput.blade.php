@@ -10,9 +10,10 @@
           <script type="text/javascript" src="{{ URL::asset('js/vipinput.js') }}"></script>
           <link rel="stylesheet" href="{{ asset('css/vipinput.css') }}">
           <meta name="csrf-token" content="{{ csrf_token() }}" />
+
     </head>
     <body>
-    <form>
+
 
     <div class="container">
         <div class="card card-inverse">
@@ -26,7 +27,7 @@
                 </h6>
             </div>
             <div class="panel-body">
-                <form>
+                <form onsubmit="return false">
                   <!-- <div class="form-group">
                       <label for="inputMemberLevel">會員等級</label>
                           <div id="member_level" class="custom-controls-stacked">
@@ -112,7 +113,7 @@
                       <label for="inputSex">*性別</label> <b id="nSex" class="need">*請選擇性別</b>
                          <div class="custom-controls-stacked" >
                             <label class="custom-control custom-radio">
-                                  <input class="radioSex" name="radio-sex" value="0" type="radio" class="custom-control-input" required>
+                                  <input class="radioSex" name="radio-sex" value="0" type="radio" class="custom-control-input" checked required>
                                   <span class="custom-control-indicator"></span>
                                   <span class="custom-control-description">女生</span>
                             </label>
@@ -138,7 +139,7 @@
                       <label for="inputBlood">*血型</label> <b id="nBlood" class="need">*請選擇血型</b>
                          <div class="custom-controls-stacked">
                             <label class="custom-control custom-radio">
-                                  <input class="radioBlood" name="radio-blood" value="0" type="radio" class="custom-control-input" required>
+                                  <input class="radioBlood" name="radio-blood" value="0" type="radio" class="custom-control-input" checked required>
                                   <span class="custom-control-indicator"></span>
                                   <span class="custom-control-description">A型</span>
                             </label>
@@ -187,7 +188,7 @@
                       <label for="inputMariage">*婚姻</label> <b id="nMar" class="need">*請選擇婚姻狀況</b>
                           <div class="custom-controls-stacked">
                               <label class="custom-control custom-radio">
-                                    <input class="radioMariage" name="radio-mariage" value="0" type="radio" class="custom-control-input" required>
+                                    <input class="radioMariage" name="radio-mariage" value="0" type="radio" class="custom-control-input" checked required>
                                     <span class="custom-control-indicator"></span>
                                     <span class="custom-control-description">已婚</span>
                               </label>
@@ -332,7 +333,7 @@
                       <label for="inputDisabilites">*殘障手冊</label> <b id="nHandic" class="need">*請選擇是否有殘障手冊</b>
                          <div class="custom-controls-stacked">
                             <label class="custom-control custom-radio">
-                                  <input class="radioDisabilites" name="radio-disabilites" value="0" type="radio" class="custom-control-input" required>
+                                  <input class="radioDisabilites" name="radio-disabilites" value="0" type="radio" class="custom-control-input" checked required>
                                   <span class="custom-control-indicator"></span>
                                   <span class="custom-control-description">無</span>
                             </label>

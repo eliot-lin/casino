@@ -78,13 +78,12 @@ $(document).ready(function(){
 	
 		var pro_type    = $('.inputVocation:checked').val();
 		var relationship  = $('.inputCooperationRelationship:checked').val();
-		console.log(relationship); 
 		// var hierarchy   = $('.inputHierarchy:checked').val();
 		var service_hostpital = $("#hospitalSelector").val(); 
 		
         var name  = $("#inputDNSName").val(); 
         var cell  = $("#inputDNSCellPhone").val(); 
-        var id_no  = $("#inputIDNumber").val(); 
+		var id_no  = $("#inputIDNumber").val(); 
         var email_first = $("#inputDNSEmail").val(); 
         // var email_second = $("#inputDNSEmail").val(); 
 
@@ -127,9 +126,18 @@ $(document).ready(function(){
 
 
 		var tell  = $("#formInputTell").val(); 
+
 		var oTell  = $("#formInputOTell").val(); 
-		
+		if(tell == '') {
+			tell = null;
+		}
+		if(oTell == '') {
+			tell = null;
+		}
+
+
         var sex = $('.radioSex:checked').val();
+		var user_id = '';
 
 		var dns = new Object();
 		//dns attribute
@@ -137,7 +145,7 @@ $(document).ready(function(){
 		dns.relationship = relationship;//     $table->tinyInteger('relationship')->default(0);
 		// dns.hierarchy = hierarchy;		//            $table->tinyInteger('hierarchy')->default(2);
 		dns.hospital_id = service_hostpital;// $table->string('serve_hospital', 40)->default('')->nullable();
-		
+		dns.user_id = user_id;
 		// dns.time = time;				//         $table->text('contact_times')->nullable();
 		// dns.zone = zone;				// 補上 database
 
@@ -145,14 +153,12 @@ $(document).ready(function(){
 		dns.division_main_id = department_first;	//$table->string('department_first', 40)->default('')->nullable();
 		dns.division_vice_id = department_second;  //$table->string('department_second', 40)->default('')->nullable();
 
-
 		var user = new Object();
 
 		user.type = "medical";
 		user.email_main = email_first;
 		user.password = id_no;
 		user.id_no = id_no;
-		user.password = id_no;
 		user.name = name;
 		user.cell = cell;
 		user.tel_home = tell;
@@ -163,37 +169,78 @@ $(document).ready(function(){
 		user.marital_status = mariage;
 		user.address = addr;
 
-		$.ajax({
-	        type: 'POST',
-	        url: '/medicals',
-	        data: dns,
-	        headers: {
-		        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-		    },
-		    success: function(results)
-		    {
-		    	alert("完成，建立下一筆資料。");
-		    	console.log(dns);
-		    	// console.log(results);
-		    }
-		});
 
-		$.ajax({
-			type: 'POST',
-			url: '/users',
-			data: user,
-			headers: {
-				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-			},
-			success: function(results)
-			{
-				console.log(user);
-				alert("完成，建立下一筆資料。");
-				// location.reload();
-				console.log(results);
-			}
-		});
 		
+		console.log(user);
+		console.log(dns);
+
+		var bool = false;
+
+		if(name == '' || cell == '' ||  id_no == '' || email_first == '' || sex == '' ||  addr == '' || birthday == '' ) {
+			bool = false;
+		}
+		else  {
+			bool = true;
+		}
+
+		function sleep(miliseconds) {
+			var currentTime = new Date().getTime();
+		
+			while (currentTime + miliseconds >= new Date().getTime()) {
+			}
+		}
+		
+		if(bool) {
+
+			$.ajax({
+				type: 'POST',
+				url: '/users',
+				data: user,
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+				success: function(results)
+				{
+					
+					console.log(user);
+					// location.reload();
+					console.log(results);
+					
+					// user_id = results.data.id;
+					
+					// dns.user_id = user_id;
+					user_id = results.data.id;
+					dns.user_id = user_id;
+					// sleep(500);
+
+					$.ajax({
+						type: 'POST',
+						url: '/medicals',
+						data: dns, 
+						headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+						},
+						success: function(results)
+						{
+							console.log(results);
+							console.log(dns);
+							alert("完成，建立下一筆資料。");
+							// sleep(500);
+						},
+						error:function(error)
+						{
+							console.log(error);
+						}
+					});
+				}
+			});
+
+				
+
+			
+			
+
+		}	
     });
 });
 
