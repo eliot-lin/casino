@@ -19,7 +19,6 @@
         </div>
         <div>
             <button type="submit">Login</button>
-            <a href="#">Forget</a>
         </div>
     </form>
 @endsection

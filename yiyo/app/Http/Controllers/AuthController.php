@@ -29,7 +29,7 @@ class AuthController extends Controller
             'type' => 'call-center',
             'email_main' => $request->email,
             'password' => $request->password
-        ]);
+            ]);
         if ($attempt) {
             return redirect('call-centers/index')->with(['status' => 'success', 'message' => 'login success']);
         }
@@ -58,7 +58,7 @@ class AuthController extends Controller
             'password' => $request->password
         ]);
         if ($attempt) {
-            return redirect('medicals/index')->with(['status' => 'success', 'message' => 'login success']);
+            return redirect('medicals/index')->with(['email' => $request->email,'status' => 'success', 'message' => 'login success']);
         }
         return back()->with(['status' => 'error', 'message' => 'wrong email or password']);
     }

@@ -1,0 +1,42 @@
+table {
+    background: rgba(0, 0, 0, 0.507);
+}
+th {
+    color: white;
+}
+.bd-pageheader{
+    font-family: "ctb_xingothic-tc-w2", Georgia, serif;
+ }
+
+body{
+    background:white;
+    font-family: "ctb_xingothic-tc-w2", Georgia, serif;
+    font-weight:bold; 
+    font-size:17px;
+ }
+ 
+ .acceptMission{
+    color:black;
+}
+.mission{
+    background-color: #114B5F;
+    color: white;
+}
+.captain {
+    font-size:30px;
+    margin-left: 35%;
+}
+
+#inline {
+    display: flex;
+    font-family: "ctb_xingothic-tc-w2", Georgia, serif;
+}
+
+.acceptMission {
+    width: 45%;
+}
+.acceptedMission {
+    position:absolute;
+    right:10px;
+    width: 45%;
+}

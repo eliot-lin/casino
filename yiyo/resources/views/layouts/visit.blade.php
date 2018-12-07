@@ -19,10 +19,10 @@
                     <h3>地址: {{$vip->address}}</h3>
                 </div>  
                 <div class="output">
-                    <h3>確認醫生: <input class="text" value="林依持"></input></h3> 
-                    <h3>確認護理人員 : <input class="text" value="流雲"></input></h3>   
-                    <h3>出診地點 : <input class="text2"></input></h3>  
-                    <h3>出診時間 : <input class="text2" type="datetime-local"></input></h3>
+                    <h3>確認醫生: <input class="text" value="林依持"></h3> 
+                    <h3>確認護理人員 : <input class="text" value="流雲"></h3>   
+                    <h3>出診地點 : <input class="text2"></h3>  
+                    <h3>出診時間 : <input class="text2" type="datetime-local"></h3>
                 </div>  
                 <div>
                     <br><br><br><br><br><br><br><br><h3><a class="btn btn-success CompleteVisitMission">完成任務</a></h3>    

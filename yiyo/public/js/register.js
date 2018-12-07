@@ -450,6 +450,7 @@
             contentType: 'application/json',
             success: function(pastHospitals)
             {     
+                console.log(pastHospitals);
                 var pastHsptls = [];
                 $(pastHospitals).each(function (index, hsptl) {
                     pastHsptls.push([
@@ -492,6 +493,7 @@
         })
     }
     getComment();
+    
 
     $('#SeedMission').click(function(){
         
@@ -510,10 +512,28 @@
         else if($('input:checked').val() != undefined)
         {
             console.log('click');
+            var temp1 = document.getElementById("hospitalSelector");
+            var strUser1 = temp1.options[temp1.selectedIndex].value;
+
+            var temp2 = document.getElementById("divisionSelector");
+            var strUser2 = temp2.options[temp2.selectedIndex].value;
+
+            var temp3 = document.getElementById("diagnosis");
+            var strUser3 = temp3.options[temp3.selectedIndex].text;
+
+            var temp = "請幫忙掛號" + strUser1 + "的" + strUser2 + "，時間：" + $('#date').val() + " " + strUser3 + 
+            "，指定醫師：" + $('#assignDr').val() + "。<br><br>感謝  " + $('input[name^=choose]:checked').data('doctor');
+
+            $('#comment').val(temp);
+
+
             var zone=[];
             $('input[name=choose]:checked').each(function () {
                 zone.push($(this).val());
             });
+
+            var name = $('#name').text();
+            name = name.substr(4, name.length);
 
             //建立委推任務
             var sub_mission_id;
@@ -525,10 +545,13 @@
                     'provider_id': $('input[name^=choose]:checked').val(),
                     'provider_name': $('input[name^=choose]:checked').data('doctor'),
                     'type_id': 6,//委託掛號
-                    'status_id': 6,//未處理
+                    'status_id': 6,//等待中
                     'issued_at': new Date().getTime() / 1000,
                     'vip_id': $('#vips_id').val(),
-                    
+                    'requester_name': name,
+                    'status_name': "等待中",
+                    'type_name': "掛號",
+                    'description': $('#comment').val(),
                 }),
                 type: 'post',
                 async: false,

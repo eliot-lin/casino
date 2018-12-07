@@ -110,4 +110,8 @@ class UsersController extends Controller
         $phs = Past_Hospitals::where('user_id', $request->id)->orderBy('finished_at', 'desc')->take(3)->get();
         return response()->json($phs);
     }
+    // public function profile(Request $request)
+    // {
+    //     return $request;
+    // }
 }

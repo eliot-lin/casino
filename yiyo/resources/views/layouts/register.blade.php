@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-xs-6 col-md-2 col-lg-3">
                     <div class="box">
-                        <h3>姓名: {{ $vip->user->name }}</h3>
+                        <h3 id="name">姓名: {{ $vip->user->name }}</h3>
                         <h3>身分證字號 : {{ $vip->user->id_no }}</h3>
                         <h3 id = "birthday"> 生日 : {{ date('Y/m/d', strtotime($vip->user->birthday)) }}</h3>
                         <h3>手機 : {{ $vip->user->cell }}</h3>
@@ -195,21 +195,21 @@
                                     <td><input name="choose" type="radio" value="100"></td>
                                     <td id="staff100">陳主任</td>
                                     <td>中國附醫</td>
-                                    <td><a href="#" class="glyphicon glyphicon-earphone"> 09255287878</a></td>
+                                    <td><a href="#" class="glyphicon glyphicon-earphone"> 0912312312</a></td>
                                     <td><span style="color:dimgray;" id="status100" class="glyphicon glyphicon-user"></span></td>
                                 </tr>
                                 <tr>
                                     <td><input name="choose" type="radio" value="101"></td>
                                     <td id="staff101">ALEX</td>
-                                    <td>元又</td>
-                                    <td><a href="#" class="glyphicon glyphicon-earphone"> 09255287878</a></td>
+                                    <td>亞東</td>
+                                    <td><a href="#" class="glyphicon glyphicon-earphone"> 0912312312</a></td>
                                     <td><span style="color:dimgray;" id="status101" class="glyphicon glyphicon-user"></span></td>
                                 </tr>
                                 <tr>
                                     <td><input name="choose" type="radio" value="102"></td>
                                     <td id="staff102">Cindy</td>
-                                    <td>元又</td>
-                                    <td><a href="#" class="glyphicon glyphicon-earphone"> 09255287878</a></td>
+                                    <td>台大</td>
+                                    <td><a href="#" class="glyphicon glyphicon-earphone"> 0912312312</a></td>
                                     <td><span style="color:dimgray;" id="status102" class="glyphicon glyphicon-user"></span></td>
                                 </tr>
                             </tbody>

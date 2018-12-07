@@ -114,4 +114,15 @@ class MedicalsController extends Controller
         // dd($doctors);
         return response()->json($doctors);
     }
+    public function login(Request $request)
+    {
+        if (!isset($request->id)) {
+            abort(400, 'method not allowed');
+        }
+        Mission::findOrFail($request->id)->update(['took_at'=>$request->took_at]);
+        $email = $request->email;//mission id
+        
+        $data = compact('email', 'id', 'missions');
+        return view('medicals.index', $data);
+    }
 }

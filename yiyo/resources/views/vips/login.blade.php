@@ -18,8 +18,10 @@
             </label>
         </div>
         <div>
-            <button type="submit">Login</button>
-            <a href="#">Forget</a>
+            <button id="login" type="submit">Login</button>
         </div>
     </form>
 @endsection
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>

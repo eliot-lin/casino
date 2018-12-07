@@ -44,6 +44,8 @@ route::middleware('auth')->group(function () {
         route::get('vips/index', function () {
             return view('vips.index');
         });
+
+
     });
 
     route::middleware('medical.identify')->group(function () {
@@ -83,6 +85,8 @@ route::middleware('auth')->group(function () {
         return view('opentok.client');
     });
 
+    Route::get('login', 'MedicalsController@logion');
+
     route::prefix('call-centers')->group(function () {
         Route::get('consultation', 'HomeController@consultation');
         Route::get('executor', 'HomeController@executor');
@@ -99,6 +103,7 @@ route::middleware('auth')->group(function () {
         Route::get('handle', 'MissionsController@handleMissionList');
         Route::get('concern', 'MissionsController@concernMissionList');
     });
+    route::get('getMissions', 'MissionsController@getMissions');
     route::get('missions/childId', 'MissionsController@getChildId');
     route::get('missions/status', 'MissionsController@status');
     route::get('missions/allmissions', 'MissionsController@getMission');
@@ -116,7 +121,7 @@ route::middleware('auth')->group(function () {
     route::post('missions/complete', 'MissionsController@complete');
     route::post('missions/message', 'MessagesController@createMessage');
 });
-
+Route::put('missions/{id}', 'MissionsController@update');
 route::resource('divisions', 'DivisionsController');
 route::resource('hospitals', 'HospitalsController');
 route::resource('medicals', 'MedicalsController');

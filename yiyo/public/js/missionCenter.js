@@ -196,34 +196,35 @@ $(document).ready(function(){
                     console.log(missions[i].requester.name);
                     if(checkPast(missions[i].issued_at) || missions[i].status_id == 3)
                     {
-                        if(missions[i].status_id == 3)
-                        {
-                            trsPastFinished.push(
-                                [   
-                                    '',
-                                    '' + missions[i].id + '',
-                                    missions[i].type.name,
-                                    missions[i].requester.name,
-                                    missions[i].provider_name,
-                                    '<span style = "color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
-                                    time(missions[i].issued_at),
-                                    time(missions[i].finished_at),
-                                ]);
-                        }
-                        else
-                        {
-                            trsPast.push(
-                            [   
-                                '',
-                                '' + missions[i].id + '',
-                                missions[i].type.name,
-                                missions[i].requester.name,
-                                missions[i].provider_name,
-                                '<span style = "color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
-                                time(missions[i].issued_at),
-                                time(missions[i].finished_at),
-                            ]);
-                        }
+                        // if(missions[i].status_id == 3)
+                        // {
+                        //     trsPastFinished.push(
+                        //         [   
+                        //             '',
+                        //             '' + missions[i].id + '',
+                        //             missions[i].type.name,
+                        //             missions[i].requester.name,
+                        //             missions[i].provider_name,
+                        //             '<span style = "color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
+                        //             time(missions[i].issued_at),
+                        //             time(missions[i].finished_at),
+                        //         ]);
+
+                        // }
+                        // else
+                        // {
+                        //     trsPast.push(
+                        //     [   
+                        //         '',
+                        //         '' + missions[i].id + '',
+                        //         missions[i].type.name,
+                        //         missions[i].requester.name,
+                        //         missions[i].provider_name,
+                        //         '<span style = "color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
+                        //         time(missions[i].issued_at),
+                        //         time(missions[i].finished_at),
+                        //     ]);
+                        // }
                     }
                     else
                     {
@@ -628,6 +629,7 @@ $(document).ready(function(){
    
     function vipAge($string)
     {
+        console.log($string);
         var birth = $string;
         console.log(birth);
         var year = Number(birth.substr(0, 4));
@@ -650,8 +652,7 @@ $(document).ready(function(){
                   // Set the date we're counting down to
                 // var countDownDate = new Date().getTime();
                 // Update the count down every 1 second
-                    
-                    var x = setInterval(function() {
+                var x = setInterval(function() {
                     for(var i = 0;i < missions.length;i++)
                     {// Get todays date and time
                         var now = new Date().getTime();

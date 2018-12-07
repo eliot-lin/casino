@@ -234,6 +234,13 @@ class MissionsController extends Controller
         return view('layouts.doctor', $data);
     }
 
+    public function getMissions(Request $request)
+    { 
+        $missions = Mission::where('provider_id', $request->id)->get();
+        return response()->json($missions);
+    }
+
+
     ////app api
     // 醫師 App 任務列表
     public function doctorMission($id)
@@ -264,5 +271,5 @@ class MissionsController extends Controller
         }
         return response()->json($returns);
     }
-
+    
 }

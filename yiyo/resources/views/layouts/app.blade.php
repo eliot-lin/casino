@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,600">
         @section('css')
         @show
-        <title>醫療系統 - @yield('title')</title>
+        <title>醫療系統 @yield('title')</title>
     </head>
 
     <body>
@@ -21,9 +21,9 @@
                 </div>
                 <ul class="nav navbar-nav">
                     @if (Auth::check())
-                        <li class="active"><a href="{{ url('call-centers/index') }}">任務中心</a></li>
-                        <li><a target="_blank" href="#">VIP管理</a></li>
-                        <li><a target="_blank" href="#">醫師＆護士</a></li>
+                        <li class="active"><a href="{{ url('call-centers/index') }}">{{ Auth::user()->name }} - 任務中心</a></li>
+                        <!-- <li><a target="_blank" href="#">VIP管理</a></li>
+                        <li><a target="_blank" href="#">醫師＆護士</a></li> -->
                     @else
                         <li class="active"><a href="{{ url('call-centers/login') }}">Login As Call Center</a></li>
                         <li><a href="{{ url('medicals/login') }}">Login As Medical</a></li>
