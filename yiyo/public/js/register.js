@@ -186,9 +186,12 @@
         // switch(phrase_value)
         // {
             // case 0:
+        var progress_text = $("#phraseType").find(":selected").text();
+        
         updateMission($('#missionId').val() , {
             'status_id':  2 ,   // 1 待執行  2 執行中  3 完成
-            'status_name': "執行中"
+            'status_name': "執行中",
+            'suggestion' : progress_text,
         } );
         //         break;
         //     case 1:
@@ -197,15 +200,13 @@
         //         break;
         // }
         
-        var progress_text = $("#phraseType").find(":selected").text();
+        
 
         // 等待 coding
         // var callcenter = new Object();
         // callcenter.id = 27;、
         // notification to device
-        SendProgressToVIP(progress_text, "red", vip_user, mission);
     });
-
     // register default value = today
     $('input[type="date"]').each(function(){   
         var today = new Date(),
@@ -488,7 +489,9 @@
             contentType: 'application/json',
             success: function(cmt)
             {
-                $('#comment').text(cmt.description);
+                var element = cmt.description;
+                var res = element.replace(/<br><\/br>/g, "\n");
+                $('#comment').text(res);
             }
         })
     }
@@ -522,9 +525,7 @@
             var strUser3 = temp3.options[temp3.selectedIndex].text;
 
             var temp = "請幫忙掛號" + strUser1 + "的" + strUser2 + "，時間：" + $('#date').val() + " " + strUser3 + 
-            "，指定醫師：" + $('#assignDr').val() + "。<br><br>感謝  " + $('input[name^=choose]:checked').data('doctor');
-
-            $('#comment').val(temp);
+            "，指定醫師：" + $('#assignDr').val() + "。";
 
 
             var zone=[];
@@ -550,8 +551,9 @@
                     'vip_id': $('#vips_id').val(),
                     'requester_name': name,
                     'status_name': "等待中",
+                    'date': $('#date').val() + ' ' + strUser3,
                     'type_name': "掛號",
-                    'description': $('#comment').val(),
+                    'description': temp,
                 }),
                 type: 'post',
                 async: false,
@@ -561,6 +563,7 @@
                 },
                 error: function(){
                     console.log('error');
+                    console.log(Date.parse($('#date').val()));
                 }
             });
 

@@ -90,6 +90,19 @@ class MissionsController extends Controller
        
         return response()->json($missions);
     }
+    public function handle2MissionList()
+    {
+        $missions = Mission::where('status_id',  3)->orderBy('type_id', 'desc')->orderBy('issued_at', 'asc')->get();
+        foreach($missions as $mission)
+        {
+            $mission->messages;
+            $mission->requester->member;
+            $mission->type;
+            $mission->status;
+        }
+       
+        return response()->json($missions);
+    }
     
     /**
      * Display a listing of the resource.
@@ -212,6 +225,7 @@ class MissionsController extends Controller
             'mission_score',
             'provider_score',
             'suggestion',
+            'date',
             'issued_at',
             'took_at',
             'finished_at'
@@ -240,6 +254,11 @@ class MissionsController extends Controller
         return response()->json($missions);
     }
 
+    public function getMissionsbyVIP(Request $request)
+    { 
+        $missions = Mission::where('requester_id', $request->id)->get();
+        return response()->json($missions);
+    }
 
     ////app api
     // 醫師 App 任務列表

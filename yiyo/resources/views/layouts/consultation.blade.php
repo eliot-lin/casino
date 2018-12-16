@@ -24,7 +24,9 @@
     <input id = "missionUpdateUrl" type="hidden" value = "{{ url('missions') }}">
     <input id = "missionStoreUrl" type="hidden" value = "{{ url('missions') }}">
     <input id = "messageStoreUrl" type="hidden" value = "{{ url('missions/message') }}">
-    <input id = "getComment" type="hidden" value = "{{ url('missions') }}">
+    <input id = "missionUrl" type="hidden" value = "{{ url('missions') }}">
+    <input id = "name" type="hidden" value = "{{ $vip->user->name}}">
+    <input id = "card" type="hidden" value = "{{ $vip->user->vip_card_no}}">
     <nav class="navbar fixed-top navbar-dark bg-danger navbar-fixed-top">
          <a class="navbar-brand" id="abc"></a>
     </nav>
@@ -56,11 +58,11 @@
                     <div class="form-group">
                       <button id="complain" type="button" class="btn btn-danger">主訴系統</button>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <button id="suggest" type="button" class="btn btn-primary" >建議任務</button>
-                    </div>
+                    </div> -->
                     <div class="form-group">
-                      <button id="reply" type="button" class="btn btn-warning">回應片語</button>
+                        <button id="reply" type="button" class="btn btn-warning">回應片語</button>
                     </div>
                     <div class="form-group">
                       <button id="complete" type="button" class="btn btn-success">完成諮詢</button>
@@ -131,10 +133,10 @@
                             <div class="form-group">
                                 <label for="inputMissionType">片語別</label>
                                 <select class="form-control" id="missionPhrase">
-                                    <option value="0">稍後回覆片語</option>
-                                    <option value="1">處理中片語</option>
-                                    <option value="2">配對中片語</option>
-                                    <option value="3">勿掛電話片語</option>
+                                    <option value="0">請稍後，馬上回復您的問題。</option>
+                                    <option value="1">請稍後，我們正在處理中</option>
+                                    <option value="2">請稍後，我們正在幫您找醫師回電給您。</option>
+                                    <option value="3">我們建議您掛號，若有需要請重新填掛號單或出診單，我們將為您處理。</option>
                                 </select>
                             </div>
                             <div> 
@@ -148,7 +150,7 @@
             </div>    
         </div>
         
-        <div id="MissionForm">
+        <!-- <div id="MissionForm">
             <div class = "container-fluid">
                 
                 <div class="row">
@@ -161,8 +163,8 @@
                                 <select class="form-control" id="missionType">
                                     <option value="0" rel="未指定">未指定</option>
                                     <option value="2" rel="0">掛號</option>
-                                    <option value="4" rel="急診">急診</option>
                                     <option value="3" rel="初診">出診</option>
+                                    <option value="4" rel="急診">急診</option>
                                 </select>
                             </div>
                             
@@ -180,7 +182,7 @@
                     <div class="col-xs-6 col-md-2"></div>
                 </div>
             </div>    
-        </div>
+        </div> -->
     </div>
     <div id = "complainForm">
         <div class="container-fluid">

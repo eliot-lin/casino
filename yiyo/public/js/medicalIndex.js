@@ -74,7 +74,8 @@ $(document).ready(function(){
             type: 'PATCH',
             contentType: 'application/json',
             data:JSON.stringify(  {'status_name': "完成" ,  
-                                   'status_id': 3} ),
+                                   'status_id': 3,
+                                   } ),
             success: function(response){
                 alert('您已完成此任務');
                 console.log('complete success');
@@ -179,7 +180,6 @@ $(document).ready(function(){
         })
     }
     getMissions();
-
 
 
 

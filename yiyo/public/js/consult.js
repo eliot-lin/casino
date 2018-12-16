@@ -36,9 +36,14 @@
     $('#phraseSend').click(function(){
         $('#phraseForm').fadeOut('slow');
         $('#MissionForm2').fadeOut('slow');
+        var temp1 = document.getElementById("missionPhrase");
+        var strUser1 = temp1.options[temp1.selectedIndex].text;
         updateMission($('#missionId').val() , {
             'status_id':  2 ,   // 1 待執行  2 執行中  3 完成
+            'status_name': "執行中",
+            'suggestion': strUser1,
         } );
+        console.log($("#missionId").val());
     });
     $('#submit').click(function (){
        
@@ -76,9 +81,9 @@
         if(confirm("確定完成諮詢任務?")){
             updateMission($('#missionId').val() , {
                 'status_id':  3 ,   // 1 待執行  2 執行中  3 完成
+                'status_name': "完成",
                 'finished_at': new Date().getTime() / 1000,
             } );
-            close();
         }
     });
     // var update = function()
@@ -176,15 +181,14 @@
     var getComment = function()
     {
         $.ajax({
-            url: $('#getComment').val() + '/' + $('#missionId').val(),
+            url: $('#missionUrl').val() + '/' + $('#missionId').val(),
             type: 'get',
             contentType: 'application/json',
             success: function(cmt)
             {
-                $('#comment').text(cmt.messages[0].source);
-            },
-            error: function(){
-                console.log("error!");
+                var element = cmt.description;
+                var res = element.replace(/<br><\/br>/g, "\n");
+                $('#comment').text(res);
             }
         })
     }
@@ -225,62 +229,47 @@
     $('#SeedMission').click(function(){
         var zone=[];
         var name=[]
+
         $('input[name=chooseDoctor]:checked').each(function () {
           zone.push($(this).val());
           name.push($(this).data('doctor'));
         });
          
         $.each( zone, function( i, val ) {
-            // 更新狀態列
-
-            //等待中
             $( "#status" + val ).text( "等待中");
-            $( "#status" + val ).css('color', 'GoldenRod');
-            // 送出 訊息  給醫師
-
-            // //接收
-            // $( "#status" + val ).text( "接收");
-            // $( "#status" + val ).css('color', 'Green');
-
-            //  //拒絕
-            //  $( "#status" + val ).text( "拒絕");
-            //  $( "#status" + val ).css('color', 'red');    
+            $( "#status" + val ).css('color', 'GoldenRod');             
         });
+
         if($('input:checked').val() != undefined)
         {
-            // var zone=[];
-            // $('input[name=chooseDoctor]:checked').each(function () {
-            //     zone.push($(this).val());
-            // });
-            console.log($('input[name^=chooseDoctor]:checked').data('doctor'));
-            console.log($('#missionId').val());
-            console.log($('#vipId').val());
-            $.each( zone, function( i, val ) {
-                console.log(name[i]);
-                $.ajax({
-                    url: $('#missionSubUrl').val(),
-                    type: 'post',
-                    contentType: 'application/json',
-                    data:JSON.stringify({
-                        'id': $('#missionId').val(),
-                        'provider_id': val,
-                        'provider_name': name[i],
-                        'type_id': 5,
-                        'status_id': 6,
-                        'issued_at': new Date().getTime() / 1000,
-                        'vip_id': $('#vipId').val()
-                    }),
-                    
-                    success: function(response){
-                        console.log(name[i]);
-                        alert(response.message);
-                        alert("已傳送片語");
-                    },
-                    error: function(){
-                        console.log('error');
-                    }
-                })
-            })
+            $.ajax({
+                url: $('#missionSubUrl').val(),
+                
+                data:JSON.stringify({
+                    'id': $('#missionId').val(),
+                    'provider_id': $('input[name^=chooseDoctor]:checked').val(),
+                    'provider_name': $('input[name^=chooseDoctor]:checked').data('doctor'),
+                    'type_id': 5,//委託諮詢
+                    'status_id': 6,//等待中
+                    'issued_at': new Date().getTime() / 1000,
+                    'requester_id': $('#vipId').val(),
+                    'requester_name': $('#vipName').val(),
+                    'status_name': "等待中",
+                    'type_name': "諮詢",
+                    'description': $('#comment').val(),
+                    'vip_card_no': "123",
+                }),
+                type: 'post',
+                async: false,
+                contentType: 'application/json',
+                success: function(response){
+                    console.log("success");
+                },
+                error: function(){
+                    console.log('error');
+                    console.log($("#card").val());
+                }
+            });
 
             $.each( zone, function( i, val ) {
                 $( "#status" + val ).text( "等待中");
@@ -293,7 +282,9 @@
             alert("Error!請選擇委託醫師!");
     });
     // console.log($vip.user);
-    console.log($('#vipCardNo').val());
+
+    // $( "#myselect option:selected" ).text();
+
     
     // var getCreateElement = function()
     // {

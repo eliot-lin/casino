@@ -14,6 +14,7 @@
 <!-- <meta http-equiv="refresh" content="3"> -->
 
 @section('content')
+
 <div id="inline">
     <div class="acceptMission">
         <table id="acceptMission" class="table table-striped table-bordered">
@@ -38,8 +39,8 @@
             <thead>
                 <tr class="mission">
                     <th id="requesterName2" style="width:18%">委託人姓名</th>
-                    <th id="requesterType2" style="width:12%">需要服務</th>
-                    <th id="issued_at2" style="width:21%">已過多久</th>  
+                    <th id="requesterType2" style="width:13%">需要服務</th>
+                    <th id="issued_at2" style="width:20%">已過多久</th>  
                     <th id="message2" style="width:39%">訊息</th>
                     <th id="done" style="width:10%">完成</th>           
                 </tr>

@@ -101,9 +101,11 @@ route::middleware('auth')->group(function () {
     });
     route::prefix('missions')->group(function () {
         Route::get('handle', 'MissionsController@handleMissionList');
+        Route::get('handle2', 'MissionsController@handle2MissionList');
         Route::get('concern', 'MissionsController@concernMissionList');
     });
     route::get('getMissions', 'MissionsController@getMissions');
+    route::get('getMissionsByVIP', 'MissionsController@getMissionsByVIP');
     route::get('missions/childId', 'MissionsController@getChildId');
     route::get('missions/status', 'MissionsController@status');
     route::get('missions/allmissions', 'MissionsController@getMission');

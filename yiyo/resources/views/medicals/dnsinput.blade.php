@@ -97,8 +97,6 @@
                                   <select name="member" id="hospitalSelector" class="input">
                                       <option value="">請先選取地區
                                   </select>
-                                  <!-- <br><br>日期 :  <input id="date" class="Time" type="date"> -->
-                              <!-- <input type="text" class="form-control"  id="inputHospitalName" placeholder="輸入服務醫院">  -->
                       </div>
 
                       <div class="form-group">

@@ -33,6 +33,7 @@ class CreateMissionsTable extends Migration
             $table->tinyInteger('provider_score')->default(0);
             $table->text('suggestion')->nullable();
             
+            $table->string('date', 40)->default('');
             $table->integer('issued_at')->unsigned()->default(0);
             $table->integer('took_at')->unsigned()->default(0);
             $table->integer('finished_at')->unsigned()->default(0);

@@ -21,6 +21,7 @@ class Mission extends Model
         'requester_name',
         'provider_name',
         'status_name',
+        'date',
         'description',
         'mission_score',
         'provider_score',

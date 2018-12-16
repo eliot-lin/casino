@@ -96,6 +96,7 @@
                     //         '<span style="color:dimgray;" id="status'+ doctor.id +'" class="glyphicon glyphicon-user"></span>',
                     //     ]);
                     // }
+                    console.log(rows);
                     drTable.rows.add(rows).draw(false);
                     // drTable.rows.add(rows).draw(false);
                 }
