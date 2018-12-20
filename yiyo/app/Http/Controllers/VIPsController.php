@@ -91,4 +91,9 @@ class VIPsController extends Controller
         VIP::findOrFail($id)->delete();
         return reponse()->json(['status' => 'ok', 'message' => 'delete success']);
     }
+    public function getVIP(Request $request)
+    { 
+        $vip = VIP::where('user_id', $request->id)->get();
+        return response()->json($vip);
+    }
 }

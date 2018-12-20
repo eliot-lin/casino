@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,600">
+        <input id = "ccurl" type="hidden" value = "{{ url('call-centers/login') }}">
+        <input id = "medurl" type="hidden" value = "{{ url('medicals/login') }}">
+        <input id = "vipurl" type="hidden" value = "{{ url('vips/login') }}">
         @section('css')
         @show
         <title>醫療系統 @yield('title')</title>
@@ -25,9 +28,9 @@
                         <!-- <li><a target="_blank" href="#">VIP管理</a></li>
                         <li><a target="_blank" href="#">醫師＆護士</a></li> -->
                     @else
-                        <li class="active"><a href="{{ url('call-centers/login') }}">Login As Call Center</a></li>
-                        <li><a href="{{ url('medicals/login') }}">Login As Medical</a></li>
-                        <li><a href="{{ url('vips/login') }}">Login As VIP</a></li>
+                        <li id = "cc" class="active"><a href="{{ url('call-centers/login') }}">Login As Call Center</a></li>
+                        <li id = "med"><a href="{{ url('medicals/login') }}">Login As Medical</a></li>
+                        <li id = "vip"><a href="{{ url('vips/login') }}">Login As VIP</a></li>
                     @endif
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -52,6 +55,7 @@
         </footer>
 
         <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/app2.js') }}"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
         @section('js')

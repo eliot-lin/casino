@@ -1,3 +1,25 @@
+#phraseForm{
+   background-color: skyblue;
+   z-index: 2;
+   position: fixed;
+   width: 500px;
+   left: 50%;
+   margin-left: -250px;
+   top: 200px;
+   border: 2px solid;
+   border-radius: 25px;
+   padding: 15px;
+   display:none;
+}
+#MissionForm2 {
+   display:none;
+   z-index: 1; 
+   position: fixed; 
+   width: 100%; 
+   height: 100%; 
+   background-color: rgba(0, 0, 0, 0.8); 
+   top: 0;
+}
 .title {
     text-align: center;
     margin: 10px;
@@ -39,10 +61,10 @@
     width: 680px;
     margin: 10px;
  }
- .CompleteVisitMission{
+ .button{
     align-content: right;
     width: 120px;
-    height: 40px;
+    margin-top: 30px;
     font-size: 20px;
  }
  .visit-table{

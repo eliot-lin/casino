@@ -108,8 +108,8 @@
                                     <option value="3">晚診</option>
                                 </optgroup>
                             </select>
-                    <br><br>指定醫生 : <input id="assignDr" class="Dr"></input>
-                    <br><br>被委託人 : <input id="bailer" class="Dr" value="{{ $missions[0]->provider_name }}"></input><br><br>
+                    <br><br>指定醫生 : <input id="assignDr" class="Dr">
+                    <br><br>被委託人 : <input id="bailer" class="Dr" value="{{ $missions[0]->provider_name }}"><br><br>
                     <a id="SeedMission" class="btn btn-primary">請求接任務</a>
                     <a class="Register-btn btn btn-warning">傳送片語 </a>
                     <a class="btn btn-success CompleteRegisterMission">成功</a>

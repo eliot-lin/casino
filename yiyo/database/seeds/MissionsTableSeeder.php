@@ -56,19 +56,19 @@ class MissionsTableSeeder extends Seeder
             $mission = [
                'requester_id' => $i,
                'provider_id' => $i + 20,
-               'type_id' => $i % 4 + 1,
+               'type_id' => $i % 3 + 1,
                'status_id' => 1,
                'method' => $i % 3,
                'group_name' => $groupname[$i % 5],
                'vip_card_no' => self::characterreturn($i%3) .'000'.(string)(rand(0,9) ). '-' .'000'.(string)(rand(0,9)) .'',
-               'type_name' => self::missionType($i % 4 + 1),
+               'type_name' => self::missionType($i % 3 + 1),
                'requester_name'=> $vipname[$i],
                'provider_name' => $ccname[$i % 4],
                'status_name' => '未執行',
                'description' => '這是問診或掛號訊息',
                'suggestion' => '這是醫師建議訊息'
             ];
-            Mission::create($mission);
+            // Mission::create($mission);
         }
     }
 }

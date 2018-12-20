@@ -27,7 +27,8 @@
                 </h6>
             </div>
             <div class="panel-body">
-                <form onsubmit="return false">
+                <form >
+                <!-- onsubmit="return false" -->
                   <!-- <div class="form-group">
                       <label for="inputMemberLevel">會員等級</label>
                           <div id="member_level" class="custom-controls-stacked">

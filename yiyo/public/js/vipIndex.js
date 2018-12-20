@@ -124,7 +124,7 @@ $(document).ready(function(){
 
         var ms = new Object();
         
-        ms.requester_name = $("#name").val();
+        ms.requester_name = $("#name2").val();
         ms.requester_id = $("#vip_id").val();
         ms.type_id = 1;
         ms.type_name = "諮詢";
@@ -144,6 +144,38 @@ $(document).ready(function(){
             {
                 
                 console.log(ms);
+                console.log(results);
+                
+            }
+        });
+    });
+    $("#sub3").click(function(){
+
+        var ms2 = new Object();
+        
+        ms2.requester_name = $("#name3").val();
+        ms2.requester_id = $("#vip_id").val();
+        ms2.type_id = 3;
+        ms2.type_name = "出診";
+        ms2.status_id = 1;
+        ms2.status_name = "未執行";
+        ms2.description = $("#des3").val();
+        ms2.vip_card_no = "S002-000" + $("#vip_id").val();
+        ms2.date = $("#date3").val();
+        
+        ms2.visitAddress = $("#address").val();
+
+        $.ajax({
+            type: 'POST',
+            url: '/missions',
+            data: ms2,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(results)
+            {
+                
+                console.log(ms2);
                 console.log(results);
                 
             }

@@ -11,9 +11,11 @@
 <input id = "handleMissionsUrl" name="missionsListUrl" type="hidden" value="{{ url('missions/handle') }}">
 <input id = "handle2MissionsUrl" name="missionsListUrl" type="hidden" value="{{ url('missions/handle2') }}">
 <input id = "getMissionsUrl" type="hidden" value = "{{ url('getMissionsByVIP') }}"> 
+<input id = "vipUrl" type="hidden" value="{{ url('vips/getVIP')}}">
 <input id = "missionUrl" type="hidden" value="{{ url('missions')}}">
 <input id = "getHospitalsByRegion" type="hidden" value="{{ url('hospitals/get-hospitals-by-region') }}">
 <input id = "vip_id" type="hidden" value="{{ Auth::user()->id }}">
+<input id = "mission_id" type="hidden" value="">
 @section('content')
 
 <div id="service" style="left:40%;margin-left: 40%;">
@@ -25,7 +27,7 @@
 <div id="container">
     <div id="registerTable">
         <form style="font-weight:normal;">
-            <div class="form-group" style="font-size: 16px;">
+            <div class="form-group" style="font-size: 16px;" > <!-- overflow: scroll; --> 
                 <div style="text-align:center; "><span style="color: gray; font-size: 32px; ">掛號填單</span></div><br>
                     <span>姓名：</span><br>
                         <input type="text" class="input" id="name" placeholder="輸入姓名" value=" {{ auth::user()->name }}"><br><br>
@@ -76,7 +78,20 @@
     </div>
 
     <div id="visitTable">
-        visitTable
+        <form style="font-weight:normal;">
+            <div class="form-group" style="font-size: 16px;">
+                <div style="text-align:center; "><span style="color: gray; font-size: 32px; ">出診填單</span></div><br>
+                    <span>姓名：</span><br>
+                        <input type="text" class="input" id="name3" placeholder="輸入姓名" value=" {{ auth::user()->name }}"><br><br>
+                    <span>日期：</span>
+                        <input id="date3" class="input" name="bdaytime" type="datetime-local" required><br>
+                    <span>出診地點：</span>
+                        <input type="text" class="input" id="address" placeholder="輸入出診地址" value=" {{ auth::user()->address }}"><br><br>
+                    <span>症狀：</span><br>
+                        <textarea name="" id="des3" class="input" cols="30" rows="10" required></textarea><br><br>
+                    <button id="sub3" type="submit" class="pure-button pure-button-primary">提交</button>
+            </div>
+        </form>
     </div>
 </div>
 

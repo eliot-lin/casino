@@ -122,8 +122,8 @@ $(document).ready(function(){
 	    vip.tel_office = '';
 	    vip.email_first = email_first;
 	    // vip.email_second = email_second;
-	    vip.marital_status = marital_status;//tiny interger
-
+		vip.marital_status = marital_status;//tiny interger
+		
 	    //add
 	    //nationality
 	    //
@@ -157,7 +157,6 @@ $(document).ready(function(){
 					success: function(results)
 					{
 						console.log(user);
-						alert("完成，建立下一筆資料。");
 						// location.reload();
 						console.log(results);
 						

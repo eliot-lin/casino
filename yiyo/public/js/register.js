@@ -152,6 +152,7 @@
     })
 
     $('body').on('change', '[id^="tab"] td:nth-child(1)', function () {
+        console.log($('input:checked').val());
         $('#bailer').val($('#staff' + $('input:checked').val()).text());
         $('#bailerID').val($('#staff' + $('input:checked').val()).data('id'));
     });
@@ -188,6 +189,7 @@
             // case 0:
         var progress_text = $("#phraseType").find(":selected").text();
         
+        console.log($('#missionId').val());
         updateMission($('#missionId').val() , {
             'status_id':  2 ,   // 1 待執行  2 執行中  3 完成
             'status_name': "執行中",
@@ -262,6 +264,7 @@
 
             updateMission($('#missionId').val() , {
                 'status_id':  3 ,   // 1 待執行  2 執行中  3 完成
+                'status_name': "完成",
                 'finished_at': new Date().getTime() / 1000
             } );
 
@@ -496,7 +499,7 @@
         })
     }
     getComment();
-    
+ 
 
     $('#SeedMission').click(function(){
         

@@ -14,7 +14,6 @@
     <input id = "allMission" type="hidden" value = "{{ url('missions/allmissions') }}">
     <input id = "missionMethod" type="hidden" value = "{{ $missions[0]->method }}">
     <input id = "vipCardNo" type="hidden" value = "{{ $vip->card_no }}">
-    <input id = "vipGroupName" type="hidden" value = "{{ $vip->group->name }}">
     <input id = "vipName" type="hidden" value = "{{ $vip->user->name }}">
     <input id = "vipId" type="hidden" value = "{{ $vip->id }}">
     <input id = "missionId" type="hidden" value = "{{ $id }}">
@@ -37,7 +36,6 @@
                 <div class="col-xs-6 col-md-4">
                     <h3>姓名: {{ $vip->user->name}}</h3>
                     <h3 id="birthday">生日: {{date('Y/m/d', strtotime($vip->user->birthday))}}</h3>
-                    <h3>會編: {{ $vip->card_no }}</h3>
                     <h3>電話: {{ $vip->user->cell }}</h3>
                     <h3>地址: {{ $vip->user->address }}</h3>
                 </div>

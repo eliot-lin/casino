@@ -120,6 +120,8 @@ route::middleware('auth')->group(function () {
     Route::get('hospitals/getHospitals', 'HospitalsController@getHospitals');
     Route::get('hospitals/getPastHospital', 'UsersController@getHistoriesByUser');
     Route::get('hospitals/findHospital', 'HospitalsController@findHospital');
+    Route::get('vips/getVIP', 'VIPsController@getVIP');
+    route::get('users/new', 'UsersController@new');
     route::post('missions/complete', 'MissionsController@complete');
     route::post('missions/message', 'MessagesController@createMessage');
 });

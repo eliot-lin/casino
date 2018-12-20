@@ -294,13 +294,14 @@ $(document).ready(function(){
 
     var getMission = function ($id)
     {
+       
         $.ajax({
             url: $('#vipMissionUrl').val() + '/' + $id,
             type: 'get',
             contentType: 'application/json',
             // text/html
             success: function (mission)
-            {
+            { console.log($id);
                 // console.log(mission);
                 // console.log(JSON.parse(mission));
                 console.log($('.vip-info #vipName').text());
@@ -838,7 +839,25 @@ var getMissionPage = function($id){
      //掛號請求處理中
      SendProgressToVIP("inprogress","#FFD700",nMission.requester,nMission);
 
-     window.open(missionTypeEng(nMission.type_name) + '?' + "id" + "=" + $id+'&&requester_id='+nMission.requester_id+'&&took_at='+new Date().getTime() / 1000);
+
+     $.ajax({
+        type: 'GET',
+        url: '/vips',
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(results)
+        {   
+            var temp;
+            $(results).each(function (index, result) {
+                if(result.user_id == nMission.requester_id)
+                temp = result.id;
+            });
+            if(results)
+            window.open(missionTypeEng(nMission.type_name) + '?' + "id" + "=" + $id+'&&requester_id='+ temp +'&&took_at='+new Date().getTime() / 1000);
+        }
+    });
+
 
  }
 

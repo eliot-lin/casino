@@ -29,6 +29,7 @@ class Mission extends Model
         'issued_at',
         'took_at',
         'finished_at',
+        'visitAddress',
     ];
 
     public $timestamps = false;

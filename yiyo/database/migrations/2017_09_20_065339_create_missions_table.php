@@ -24,6 +24,7 @@ class CreateMissionsTable extends Migration
             $table->tinyInteger('method')->default(0); // 訊息 電話 錄音
             $table->string('group_name', 40)->default('');
             $table->string('vip_card_no', 40)->default('');
+            $table->string('visitAddress', 40)->default('');
             $table->string('type_name', 40)->default('');
             $table->string('requester_name', 40)->default('');
             $table->string('provider_name', 40)->default('');
@@ -33,6 +34,7 @@ class CreateMissionsTable extends Migration
             $table->tinyInteger('provider_score')->default(0);
             $table->text('suggestion')->nullable();
             
+
             $table->string('date', 40)->default('');
             $table->integer('issued_at')->unsigned()->default(0);
             $table->integer('took_at')->unsigned()->default(0);
