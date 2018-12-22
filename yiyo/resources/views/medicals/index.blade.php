@@ -13,6 +13,7 @@
 <input id="medical_id" type="hidden" value="{{ Auth::user()->id }}">
 <!-- <meta http-equiv="refresh" content="3"> -->
 
+<body background="{{ asset('images/true.jpg') }}" style="background-size:cover;background-repeat:no-repeat;height:auto;width:auto;">
 @section('content')
 
 <div id="inline">

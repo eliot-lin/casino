@@ -56,9 +56,31 @@ $(document).ready(function(){
                                    'status_id': 2} ),
             contentType: 'application/json',
             success: function(response){
-                console.log(response);
-                console.log('update success');
+                
                 alert('您已接受此任務');
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/missions',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(missions)
+                    {
+                        var temp, temp1;
+                        $(missions).each(function (index, mission) {
+                            if(mission.id == $id) {
+                                temp = mission.parent_id;
+                                temp1 = mission.method
+                            }
+                        });
+
+                        $(missions).each(function (index, mission) {
+                            if(mission.id != $id && mission.parent_id == temp && mission.method == temp1) 
+                                deleteMission(mission.id);
+                        });
+                    },
+                });
                 getMissions();
             },
             error: function(){

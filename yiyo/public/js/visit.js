@@ -32,7 +32,9 @@
     });
 
     var url = document.URL;
+    var requester_id = document.URL.substring((document.URL.lastIndexOf('r_id=') + 5), url.indexOf('&&took'));
     var id = document.URL.substring((document.URL.lastIndexOf('?id=') + 4), url.indexOf('&'));
+    console.log(requester_id);
 
     $('.CompleteVisitMission').click(function(){
         if(confirm("確定完成出診任務?")){
@@ -45,8 +47,7 @@
         }
     });
    
-    console.log(id);
-
+    
     $(".data-table").dataTable();
 
     // 拿 出診日期
@@ -60,9 +61,11 @@
             {
                 var element = cmt.date;
                 var address = cmt.visitAddress;
-
+                var d = cmt.description;
+                
                 $('#date').val(element);
                 $('#address').val(address);
+                $("#des").val(d);
 
                 console.log(element);
             }
@@ -117,7 +120,7 @@
                                             var ns = [];
                                             $(results).each(function (index, result) {
                                                 if(result.occupation_id == 1 && result.relationship == "合約") {
-                                                        var name, area, division, hospital, id = result.id;
+                                                        var name, area, division, hospital, id = result.user_id;
                                                         $(users).each(function (index, user) {
                                                             if(result.user_id == user.id) 
                                                                 name = user.name;
@@ -199,12 +202,14 @@
     });
 
     // end of taking data
-
+    var drName, nsName;
     $('body').on('change', '[id^="drTable"] td:nth-child(1)', function () {
+        drName = $('#dr' + $("input[name='dr']:checked").val()).text();
         $('#confirmDr').val($('#dr' + $("input[name='dr']:checked").val()).text());
     });
 
     $('body').on('change', '[id^="nsTable"] td:nth-child(1)', function () {
+        nsName = $('#ns' + $("input[name='ns']:checked").val()).text();
         $('#confirmNs').val($('#ns' + $("input[name='ns']:checked").val()).text());
     });
 
@@ -260,6 +265,7 @@
             } );
         }
 
+        
         //         break;
         //     case 1:
         //         // 完成任務
@@ -276,5 +282,119 @@
     });
 
     
+    
+    $('#SeedMission').click(function(){
+        console.log("in");
+        if($("input[name='ns']:checked").val() == undefined && $("input[name='dr']:checked").val() == undefined){
+            alert("請輸入選擇出診醫師或護理師");
+            return;
+        }
+        else
+        {
+            // var temp1 = document.getElementById("hospitalSelector");
+            // var strUser1 = temp1.options[temp1.selectedIndex].value;
 
+            // var temp2 = document.getElementById("divisionSelector");
+            // var strUser2 = temp2.options[temp2.selectedIndex].value;
+
+            // var temp3 = document.getElementById("diagnosis");
+            // var strUser3 = temp3.options[temp3.selectedIndex].text;
+
+            var name = $('#name').val();
+            var d =  $("#date").val();
+            d = d.replace("T", " - ");
+    
+            var temp = "請問能否出診<br>姓名：" + name + "<br>地址：" + $("#address").val() + "<br>時間：" + d + "<br>病狀" + 
+            $("#des").val() + "。";
+            console.log(temp);
+
+            //建立委推任務
+
+            $.ajax({
+                type: 'GET',
+                url: '/vips',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(vips)
+                {
+                    var rid;
+                    $(vips).each(function (index, vip) {
+                        if(requester_id == vip.id) 
+                            rid = vip.user_id;
+                    });
+                    console.log(rid);
+
+                    if($("input[name='dr']:checked").val() != undefined) {
+                        console.log("dr");
+                        
+                        $.ajax({
+                            url: $('#missionUrl').val(),
+                            
+                            data:JSON.stringify({
+                                'parent_id': id,
+                                'requester_id': rid,
+                                'provider_id': $("input[name='dr']:checked").val(),
+                                'provider_name': drName,
+                                'type_id': 7,//委託出診
+                                'status_id': 6,//等待中
+                                'issued_at': new Date().getTime() / 1000,
+                                'vip_id': id,
+                                'requester_name': name,
+                                'status_name': "等待中",
+                                'date': d,
+                                'type_name': "委託出診",
+                                'description': temp,
+                                'method': 0, // dr
+                            }),
+                            type: 'post',
+                            async: false,
+                            contentType: 'application/json',
+                            success: function(response){
+                                console.log(response);
+                            },
+                            error: function(){
+                                console.log('error');
+                                console.log(Date.parse($('#date').val()));
+                            }
+                        });
+                    }
+                    if($("input[name='ns']:checked").val() != undefined) {
+                        console.log("ns");
+                        $.ajax({
+                            url: $('#missionUrl').val(),
+                            
+                            data:JSON.stringify({
+                                'parent_id': id,
+                                'requester_id': rid,
+                                'provider_id': $("input[name='ns']:checked").val(),
+                                'provider_name': nsName,
+                                'type_id': 7,//委託出診
+                                'status_id': 6,//等待中
+                                'issued_at': new Date().getTime() / 1000,
+                                'vip_id': id,
+                                'requester_name': name,
+                                'status_name': "等待中",
+                                'date': d,
+                                'type_name': "委託出診",
+                                'description': temp,
+                                'method': 1, // ns
+                            }),
+                            type: 'post',
+                            async: false,
+                            contentType: 'application/json',
+                            success: function(response){
+                                console.log(response);
+                            },
+                            error: function(){
+                                console.log('error');
+                                console.log(Date.parse($('#date').val()));
+                            }
+                        });
+                    }
+
+                },
+            });
+        };
+    });
 })()

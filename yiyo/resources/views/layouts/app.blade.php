@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+        <link rel="stylesheet" href="{{ asset('css/login.css') }}">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
@@ -11,6 +13,7 @@
         <input id = "ccurl" type="hidden" value = "{{ url('call-centers/login') }}">
         <input id = "medurl" type="hidden" value = "{{ url('medicals/login') }}">
         <input id = "vipurl" type="hidden" value = "{{ url('vips/login') }}">
+        
         @section('css')
         @show
         <title>醫療系統 @yield('title')</title>
@@ -28,6 +31,7 @@
                         <!-- <li><a target="_blank" href="#">VIP管理</a></li>
                         <li><a target="_blank" href="#">醫師＆護士</a></li> -->
                     @else
+                        <body id="gray" background="{{ asset('images/Wallpapers 1366x768.jpg') }}" style="background-size:cover;background-repeat:no-repeat;height:auto;width:auto;">
                         <li id = "cc" class="active"><a href="{{ url('call-centers/login') }}">Login As Call Center</a></li>
                         <li id = "med"><a href="{{ url('medicals/login') }}">Login As Medical</a></li>
                         <li id = "vip"><a href="{{ url('vips/login') }}">Login As VIP</a></li>

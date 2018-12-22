@@ -16,6 +16,7 @@
 <input id = "getHospitalsByRegion" type="hidden" value="{{ url('hospitals/get-hospitals-by-region') }}">
 <input id = "vip_id" type="hidden" value="{{ Auth::user()->id }}">
 <input id = "mission_id" type="hidden" value="">
+<body id="bg" background="{{ asset('images/true.jpg') }}" style="background-size:cover;background-repeat:no-repeat;height:auto;width:auto;">
 @section('content')
 
 <div id="service" style="left:40%;margin-left: 40%;">

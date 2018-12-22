@@ -74,14 +74,14 @@ $(document).ready(function(){
             $('#vip-th').attr('checked', true);
     })
     var handle6_count = 0;
-    $('#handle6').click(function(e){
-        if(!e.shiftKey)
-            $('input[name^=handle-th]:checked').attr('checked', false);
-        if($(this).hasClass("sorting"))
-            $('#executor-th').attr('checked', false);
-        else
-            $('#executor-th').attr('checked', true);
-    })
+    // $('#handle6').click(function(e){
+    //     if(!e.shiftKey)
+    //         $('input[name^=handle-th]:checked').attr('checked', false);
+    //     if($(this).hasClass("sorting"))
+    //         $('#executor-th').attr('checked', false);
+    //     else
+    //         $('#executor-th').attr('checked', true);
+    // })
     var handle7_count = 0;
     $('#handle7').click(function(e){
         if(!e.shiftKey)
@@ -102,15 +102,15 @@ $(document).ready(function(){
             $('#missionAge-th').attr('checked', true);
       
     })
-    var handle9_count = 0;
-    $('#handle9').click(function(e){
-        if(!e.shiftKey)
-            $('input[name^=handle-th]:checked').attr('checked', false);
-        if($(this).hasClass("sorting"))
-            $('#message-th').attr('checked', false);
-        else
-            $('#message-th').attr('checked', true);
-    })
+    // var handle9_count = 0;
+    // $('#handle9').click(function(e){
+    //     if(!e.shiftKey)
+    //         $('input[name^=handle-th]:checked').attr('checked', false);
+    //     if($(this).hasClass("sorting"))
+    //         $('#message-th').attr('checked', false);
+    //     else
+    //         $('#message-th').attr('checked', true);
+    // })
 
 
     $('#btnRegister').click(function(){
@@ -178,81 +178,81 @@ $(document).ready(function(){
         else
             return 0;
     }
-    var getExecutor = function($id)
-    {   
-        console.log($id);
-        $.ajax({
-            url: $('#executorUrl').val() + '/' + $id,
-            type: 'get',
-            contentType: 'application/json',
-            success: function (missions)
-            {
-                console.log(missions);
-                var trs = [];
-                var trsPast = [];
-                var trsPastFinished = [];
-                for(var i = 0;i<missions.length;i++)
-                {   
-                    console.log(missions[i].requester.name);
-                    if(checkPast(missions[i].issued_at) || missions[i].status_id == 3)
-                    {
-                        // if(missions[i].status_id == 3)
-                        // {
-                        //     trsPastFinished.push(
-                        //         [   
-                        //             '',
-                        //             '' + missions[i].id + '',
-                        //             missions[i].type.name,
-                        //             missions[i].requester.name,
-                        //             missions[i].provider_name,
-                        //             '<span style = "color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
-                        //             time(missions[i].issued_at),
-                        //             time(missions[i].finished_at),
-                        //         ]);
+    // var getExecutor = function($id)
+    // {   
+    //     console.log($id);
+    //     $.ajax({
+    //         url: $('#executorUrl').val() + '/' + $id,
+    //         type: 'get',
+    //         contentType: 'application/json',
+    //         success: function (missions)
+    //         {
+    //             console.log(missions);
+    //             var trs = [];
+    //             var trsPast = [];
+    //             var trsPastFinished = [];
+    //             for(var i = 0;i<missions.length;i++)
+    //             {   
+    //                 console.log(missions[i].requester.name);
+    //                 if(checkPast(missions[i].issued_at) || missions[i].status_id == 3)
+    //                 {
+    //                     // if(missions[i].status_id == 3)
+    //                     // {
+    //                     //     trsPastFinished.push(
+    //                     //         [   
+    //                     //             '',
+    //                     //             '' + missions[i].id + '',
+    //                     //             missions[i].type.name,
+    //                     //             missions[i].requester.name,
+    //                     //             missions[i].provider_name,
+    //                     //             '<span style = "color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
+    //                     //             time(missions[i].issued_at),
+    //                     //             time(missions[i].finished_at),
+    //                     //         ]);
 
-                        // }
-                        // else
-                        // {
-                        //     trsPast.push(
-                        //     [   
-                        //         '',
-                        //         '' + missions[i].id + '',
-                        //         missions[i].type.name,
-                        //         missions[i].requester.name,
-                        //         missions[i].provider_name,
-                        //         '<span style = "color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
-                        //         time(missions[i].issued_at),
-                        //         time(missions[i].finished_at),
-                        //     ]);
-                        // }
-                    }
-                    else
-                    {
-                        trs.push(
-                        [   
-                            '',
-                            '' + missions[i].id + '',
-                            missions[i].type.name,
-                            missions[i].requester.name,
-                            missions[i].provider_name,
-                            '<span style = "color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
-                            time(missions[i].issued_at),
-                            time(missions[i].finished_at),
-                        ]);
+    //                     // }
+    //                     // else
+    //                     // {
+    //                     //     trsPast.push(
+    //                     //     [   
+    //                     //         '',
+    //                     //         '' + missions[i].id + '',
+    //                     //         missions[i].type.name,
+    //                     //         missions[i].requester.name,
+    //                     //         missions[i].provider_name,
+    //                     //         '<span style = "color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
+    //                     //         time(missions[i].issued_at),
+    //                     //         time(missions[i].finished_at),
+    //                     //     ]);
+    //                     // }
+    //                 }
+    //                 else
+    //                 {
+    //                     trs.push(
+    //                     [   
+    //                         '',
+    //                         '' + missions[i].id + '',
+    //                         missions[i].type.name,
+    //                         missions[i].requester.name,
+    //                         // missions[i].provider_name,
+    //                         '<span style = "color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
+    //                         time(missions[i].issued_at),
+    //                         time(missions[i].finished_at),
+    //                     ]);
                     
-                    }
-                }
-                console.log(trs);
-                $('#executorTable').DataTable().rows.add(trs).draw(false);
-                var table = $('#executorTable').DataTable();
-                table.rows.add(trsPast).draw().nodes().to$().addClass('pastNotFinished');
-                table.rows.add(trsPastFinished).draw().nodes().to$().addClass('pastFinished');
-            },
-            error: function(){
-                console.log('error!')
-            }
-        });
-    }
+    //                 }
+    //             }
+    //             console.log(trs);
+    //             $('#executorTable').DataTable().rows.add(trs).draw(false);
+    //             var table = $('#executorTable').DataTable();
+    //             table.rows.add(trsPast).draw().nodes().to$().addClass('pastNotFinished');
+    //             table.rows.add(trsPastFinished).draw().nodes().to$().addClass('pastFinished');
+    //         },
+    //         error: function(){
+    //             console.log('error!')
+    //         }
+    //     });
+    // }
 
     var getStatus = function($id, $missionId)
     {   
@@ -277,7 +277,7 @@ $(document).ready(function(){
                             '' + missions[i].id + '',
                             missions[i].type.name,
                             missions[i].requester.name,
-                            missions[i].provider_name,
+                            // missions[i].provider_name,
                             '<span style = "cursor:pointer; color:'+statusColor(missions[i].status_id)+'">' + missions[i].status.name + '</span>',
                             time(missions[i].issued_at),
                             time(missions[i].finished_at),
@@ -480,33 +480,33 @@ $(document).ready(function(){
             getMission($(this).data('id'));
         }
     })
-    $('body').on('click', 'span[id^=executor]', function(){
-        $('#choose'+$(this).data('id')+'').prop('checked',true);
-        console.log($(this).data('correspondent'));
-        $('#executorInfo').fadeIn('slow');
-        $('#MissionForm2').fadeIn('slow');
-        getExecutor($(this).data('correspondent'));
-        console.log($('#executorTable'));
-        getMission($('input:checked').data('requester_id'));
+    // $('body').on('click', 'span[id^=executor]', function(){
+    //     $('#choose'+$(this).data('id')+'').prop('checked',true);
+    //     console.log($(this).data('correspondent'));
+    //     $('#executorInfo').fadeIn('slow');
+    //     $('#MissionForm2').fadeIn('slow');
+    //     getExecutor($(this).data('correspondent'));
+    //     console.log($('#executorTable'));
+    //     getMission($('input:checked').data('requester_id'));
         
-    })
-    $('body').on('click', 'span[id^=status]', function(){
-        $('#choose'+$(this).data('id')+'').prop('checked',true);
-        console.log($(this).data('vip'));
-        getStatus($(this).data('vip'),$(this).data('id'));
-        $('#statusInfo').fadeIn('slow');
-        $('#MissionForm2').fadeIn('slow');
-        getMission($('input:checked').data('requester_id'));
-    })
-    $('body').on('click', 'span[id^=_executor]', function(){
-        $('#_choose'+$(this).data('id')+'').prop('checked',true);
-        console.log($(this).data('correspondent'));
-        getExecutor($(this).data('correspondent'));
-        $('#executorInfo').fadeIn('slow');
-        $('#MissionForm2').fadeIn('slow');
-        console.log($("input[id^='_choose']:checked").val());
-        getCare($("input[id^='_choose']:checked").data('requester_id'));
-    })
+    // })
+    // $('body').on('click', 'span[id^=status]', function(){
+    //     $('#choose'+$(this).data('id')+'').prop('checked',true);
+    //     console.log($(this).data('vip'));
+    //     getStatus($(this).data('vip'),$(this).data('id'));
+    //     $('#statusInfo').fadeIn('slow');
+    //     $('#MissionForm2').fadeIn('slow');
+    //     getMission($('input:checked').data('requester_id'));
+    // })
+    // $('body').on('click', 'span[id^=_executor]', function(){
+    //     $('#_choose'+$(this).data('id')+'').prop('checked',true);
+    //     console.log($(this).data('correspondent'));
+    //     getExecutor($(this).data('correspondent'));
+    //     $('#executorInfo').fadeIn('slow');
+    //     $('#MissionForm2').fadeIn('slow');
+    //     console.log($("input[id^='_choose']:checked").val());
+    //     getCare($("input[id^='_choose']:checked").data('requester_id'));
+    // })
     $('body').on('click', 'span[id^=_mission]', function(){
         $('#_choose'+$(this).data('id')+'').attr('checked',true);
         getStatus($(this).data('vip'),$(this).data('id'));
@@ -534,7 +534,7 @@ $(document).ready(function(){
                             '<span id = "member' + missions[i].id+ '" data-id = "'+missions[i].requester.member.user_id+'">'+missions[i].requester.member.card_no+'</span>',
                             '<button id="'+ missions[i].id + '" type="button" class="btn btn-' + missionTypeButtonClass(missions[i].type.name) +'" onclick="getMissionPage(this.id)" >' + missions[i].type.name + '</button>',
                             '<span id = "vip' + missions[i].id + '" data-missionid="'+missions[i].id+'"data-id="' + missions[i].requester.member.id + '" style = "cursor:pointer;">' + missions[i].requester.name + '</span>',
-                            '<span id = "executor"' + missions[i].id + ' data-correspondent="' + missions[i].provider_id + '" style = "cursor:pointer"  data-id = "'+missions[i].id+'">' + missions[i].provider_name + '</span>',
+                            // '<span id = "executor"' + missions[i].id + ' data-correspondent="' + missions[i].provider_id + '" style = "cursor:pointer"  data-id = "'+missions[i].id+'">' + missions[i].provider_name + '</span>',
                             '<span id = "status"' + missions[i].id + ' data-status="'+ missions[i].status_id +'" data-vip="'+missions[i].requester_id+'"style = "cursor:pointer; color:'+statusColor(missions[i].status_id)+'"  data-id = "'+missions[i].id+'">' + missions[i].status.name + '</span>',
                             '<span id = "age'+missions[i].id+'" data-sort = "'+missions[i].issued_at+'" style = "color:'+ missionColor(missions[i].type_id) +'"  data-id = "'+missions[i].id+'">'+missions[i].issued_at+'</span>',
                             '<a href="#" id = "method'+ missions[i].id +'" data-sort = "'+missions[i].method+'"data-method = "'+ missions[i].method +'" class="'+ missionMethod(missions[i].method)+'" style = "text-decoration:none;"  data-id = "'+missions[i].id+'"><span style="display:none;">'+missions[i].method+'</span></a>'
@@ -573,7 +573,7 @@ $(document).ready(function(){
                             '<span id = "_member' + missions[i].id+ '" data-id = "'+missions[i].requester.member.user_id+'">'+missions[i].requester.member.card_no+'</span>',
                             '<span  id = "_mission' + missions[i].id + '"data-type="'+ missions[i].type_id + '" data-vip = "'+missions[i].requester_id +'"data-id = "'+missions[i].id+'" style = "cursor:pointer;">' + missions[i].type.name +'</span>',
                             '<span id = "_vip' + missions[i].id + '" data-careid="'+missions[i].id+'"data-id="' + missions[i].requester.member.user_id + '" style = "cursor:pointer;">' + missions[i].requester.name + '</span>',
-                            '<span  id = "_executor"' + missions[i].id + '" data-correspondent="' + missions[i].provider_id + '" style = "cursor:pointer"  data-id = "'+missions[i].id+'">' + missions[i].provider_name + '</span>',
+                            // '<span  id = "_executor"' + missions[i].id + '" data-correspondent="' + missions[i].provider_id + '" style = "cursor:pointer"  data-id = "'+missions[i].id+'">' + missions[i].provider_name + '</span>',
                             '<span  id = "_age'+ missions[i].id +'"style = "color:green;" data-id = "'+missions[i].id+'"></span>',
                         ]
                     );
@@ -789,7 +789,7 @@ var getMissionList = function ()
                         '<span id = "member' + missions[i].id+ '" data-id = "'+missions[i].requester.member.user_id+'">'+missions[i].requester.member.card_no+'</span>',
                         '<button id="'+ missions[i].id + '" type="button" class="btn btn-' + missionTypeButtonClass(missions[i].type.name) +'" onclick="getMissionPage(this.id)" >' + missions[i].type.name + '</button>',
                         '<span id = "vip' + missions[i].id + '" data-missionid="'+missions[i].id+'"data-id="' + missions[i].requester.member.id + '" style = "cursor:pointer;">' + missions[i].requester.name + '</span>',
-                        '<span id = "executor"' + missions[i].id + ' data-correspondent="' + missions[i].provider_id + '" style = "cursor:pointer"  data-id = "'+missions[i].id+'">' + missions[i].provider_name + '</span>',
+                        // '<span id = "executor"' + missions[i].id + ' data-correspondent="' + missions[i].provider_id + '" style = "cursor:pointer"  data-id = "'+missions[i].id+'">' + missions[i].provider_name + '</span>',
                         '<span id = "status"' + missions[i].id + ' data-status="'+ missions[i].status_id +'" data-vip="'+missions[i].requester_id+'"style = "cursor:pointer; color:'+statusColor(missions[i].status_id)+'"  data-id = "'+missions[i].id+'">' + missions[i].status.name + '</span>',
                         '<span id = "age'+missions[i].id+'" data-sort = "'+missions[i].issued_at+'" style = "color:'+ missionColor(missions[i].type_id) +'"  data-id = "'+missions[i].id+'">'+missions[i].issued_at+'</span>',
                         '<a href="#" id = "method'+ missions[i].id +'" data-sort = "'+missions[i].method+'"data-method = "'+ missions[i].method +'" class="'+ missionMethod(missions[i].method)+'" style = "text-decoration:none;"  data-id = "'+missions[i].id+'"><span style="display:none;">'+missions[i].method+'</span></a>'
@@ -857,10 +857,213 @@ var getMissionPage = function($id){
             window.open(missionTypeEng(nMission.type_name) + '?' + "id" + "=" + $id+'&&requester_id='+ temp +'&&took_at='+new Date().getTime() / 1000);
         }
     });
-
-
  }
 
+$("#list")
+
+$("#gray").click(function() {
+    $("#add").fadeOut("slow");
+    $("#gray").fadeOut("slow");
+});
+
+ $("#newMission").click(function () {
+    $("#add").fadeIn("slow");
+    $("#gray").fadeIn("slow");
+ });
+
+ var getHospitalsByRegion = function (no)
+    {
+        $.ajax({
+            url: $('#getHospitalsByRegion').val(),
+            data: {'no': no},
+            type: 'get',
+            contentType: 'application/json',
+            success: function (region)
+            {
+                var hospitalsOptions = [];
+                $(region.cities).each(function (i, city) {
+                    $(city.hospitals).each(function (index, hospital) {
+                        hospitalsOptions.push('<option value=' + hospital.id + '>' + hospital.name + '</option>');
+                    });
+				});
+				
+                $('#hospitalSelector').html(hospitalsOptions.join(''));
+
+            },
+            error: function()
+            {
+                console.log('error');
+            }
+        });
+    }
+
+    $('#regionSelector').change(function () {
+        getHospitalsByRegion($(this).val());
+    });
+    
+    getHospitalsByRegion('N'); // 預設值
+ 
+ $.ajax({
+    type: 'GET',
+    url: '/users/new',
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function(users)
+    {
+        $(users).each(function (index, user) {
+            $('#list').append($('<option>', {
+                value: user.id,
+                text: user.name + "、" + user.id_no,
+            }));
+        });
+    },
+});
+
+$.ajax({
+    type: 'GET',
+    url: '/vips',
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function(users)
+    {
+        $("#list").change(function() {
+            var id = $(this).find('option:selected').val();
+            var name = $(this).find('option:selected').text();
+            name = name.substring(0, name.indexOf('、'));
+
+            $(users).each(function (index, user) {
+                if(user.id == id) {
+                    $("#card_no").text(user.card_no);
+                }
+            });
+
+            $("#sub").click(function(){
+
+                var temp1 = document.getElementById("hospitalSelector");
+                var strUser1 = temp1.options[temp1.selectedIndex].text;
+            
+                var temp3 = document.getElementById("diagnosis");
+                var strUser3 = temp3.options[temp3.selectedIndex].text;
+            
+                var description = ("醫院："  + strUser1 + "<br></br>日期、時間：" + $("#date").val() + " " + strUser3 + "<br></br>症狀: " + $("#des").val() + "<br></br>指定醫師: " + $("#drname").val());
+                console.log(description);
+            
+                var ms = new Object();
+                
+                ms.requester_name = name;
+                ms.requester_id = id;
+                ms.type_id = 2;
+                ms.type_name = "掛號";
+                ms.date = $("#date").val();
+                ms.status_id = 1;
+                ms.status_name = "未執行";
+                ms.description = description;
+                ms.vip_card_no = "S001-000" + id;
+            
+                $.ajax({
+                    type: 'POST',
+                    url: '/missions',
+                    data: ms,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(results)
+                    {
+                        
+                        console.log(ms);
+                        console.log(results);
+                        
+                    }
+                });
+            });
+            $("#sub2").click(function(){
+            
+                var ms = new Object();
+                
+                ms.requester_name = name;
+                ms.requester_id = id;
+                ms.type_id = 1;
+                ms.type_name = "諮詢";
+                ms.status_id = 1;
+                ms.status_name = "未執行";
+                ms.description = $("#des2").val();
+                ms.vip_card_no = "S001-000" + id;
+            
+                $.ajax({
+                    type: 'POST',
+                    url: '/missions',
+                    data: ms,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(results)
+                    {
+                        
+                        console.log(ms);
+                        console.log(results);
+                        
+                    }
+                });
+            });
+            $("#sub3").click(function(){
+            
+                var ms2 = new Object();
+                
+                ms2.requester_name = name;
+                ms2.requester_id = id;
+                ms2.type_id = 3;
+                ms2.type_name = "出診";
+                ms2.status_id = 1;
+                ms2.status_name = "未執行";
+                ms2.description = $("#des3").val();
+                ms2.vip_card_no = "S001-000" + id;
+                ms2.date = $("#date3").val();
+                
+                ms2.visitAddress = $("#address").val();
+            
+                $.ajax({
+                    type: 'POST',
+                    url: '/missions',
+                    data: ms2,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(results)
+                    {
+                        
+                        console.log(ms2);
+                        console.log(results);
+                        
+                    }
+                });
+            });
+        });
+
+        $("#service").change(function() {
+            if($(this).children(":selected").val() == 1) {
+                $("#registerTable").hide("slow");
+                $("#visitTable").hide("slow");
+                $("#consultationTable").fadeIn("slow");
+            }
+            else if($(this).children(":selected").val() == 2) {
+                $("#registerTable").fadeIn("slow");
+                $("#visitTable").hide("slow");
+                $("#consultationTable").hide("slow");
+            }
+            else if($(this).children(":selected").val() == 3) {
+                $("#registerTable").hide("slow");
+                $("#visitTable").fadeIn("slow");
+                $("#consultationTable").hide("slow");
+            }
+            
+        })
+
+    },
+});
+
+ 
  //傳送片語給vip
  var SendProgressToVIP = function (text,color,vip,mission)
  {   
@@ -954,6 +1157,8 @@ var getMissionPage = function($id){
  {
     switch($type)
     {   
+        case '委託掛號':
+            return "primary";
         case '掛號':
             return "success";
         case '諮詢':

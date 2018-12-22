@@ -555,7 +555,7 @@
                     'requester_name': name,
                     'status_name': "等待中",
                     'date': $('#date').val() + ' ' + strUser3,
-                    'type_name': "掛號",
+                    'type_name': "委託掛號",
                     'description': temp,
                 }),
                 type: 'post',

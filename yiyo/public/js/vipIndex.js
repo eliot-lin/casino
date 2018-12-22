@@ -102,7 +102,7 @@ $(document).ready(function(){
         ms.status_id = 1;
         ms.status_name = "未執行";
         ms.description = description;
-        ms.vip_card_no = "S002-000" + $("#vip_id").val();
+        ms.vip_card_no = "S001-000" + $("#vip_id").val();
 
         $.ajax({
             type: 'POST',
@@ -131,7 +131,7 @@ $(document).ready(function(){
         ms.status_id = 1;
         ms.status_name = "未執行";
         ms.description = $("#des2").val();
-        ms.vip_card_no = "S002-000" + $("#vip_id").val();
+        ms.vip_card_no = "S001-000" + $("#vip_id").val();
 
         $.ajax({
             type: 'POST',
@@ -160,7 +160,7 @@ $(document).ready(function(){
         ms2.status_id = 1;
         ms2.status_name = "未執行";
         ms2.description = $("#des3").val();
-        ms2.vip_card_no = "S002-000" + $("#vip_id").val();
+        ms2.vip_card_no = "S001-000" + $("#vip_id").val();
         ms2.date = $("#date3").val();
         
         ms2.visitAddress = $("#address").val();

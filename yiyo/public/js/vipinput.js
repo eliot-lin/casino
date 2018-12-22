@@ -161,7 +161,7 @@ $(document).ready(function(){
 						console.log(results);
 						
 						vip.user_id = results.data.id;
-
+						vip.card_no = 'S0001-000' + vip.user_id;
 						$.ajax({
 							type: 'POST',
 							url: '/vips',

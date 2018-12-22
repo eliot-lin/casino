@@ -10,6 +10,9 @@
 <body>
     <input id = "missionUrl" type="hidden" value = "{{ url('missions') }}">
     <input id = "missionUpdateUrl" type="hidden" value = "{{ url('missions') }}">
+    <input id = "name" type="hidden" value = "{{$vip->user->name}}">
+    <input id = "name" type="hidden" value = "{{$vip->user->name}}">
+
 
     <h1 class="title"><b>出診任務</b></h1>
     <footer class="footer">
@@ -27,9 +30,12 @@
                     <h3>出診時間 : <input id="date" class="input" name="bdaytime" type="datetime-local" style="color:black;"required></h3>
                 </div>  
                 <div>
-                    <a id="SeedMission" class="btn btn-primary button">請求接任務</a><br>
+                    <input type="button" value="請求接任務" id="SeedMission" class="btn btn-primary button"><br>
                     <a class="Register-btn btn btn-warning button">傳送片語 </a><br>
                     <a class="btn btn-success CompleteVisitMission button">完成任務</a>  
+                </div>
+                <div>
+                    <textarea name="" id="des" class="input" cols="30" rows="10" style="margin-left: 30px; margin-top: 30px; color: black;"></textarea>
                 </div>
             </div>
     </footer>

@@ -36,7 +36,75 @@ tr{
 #vipInfo{
     width: 100%;
 }
+#add {
+    background-color: skyblue;
+    z-index: 2;
+    position: absolute;
+    width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    top: 200px;
+    border: 2px solid;
+    border-radius: 25px;
+    padding: 15px;
+    display:none;
+}
+#gray {
+    display:none;
+    height: 100%;
+    width: 100%;
+    background-color: skyblue;
+    z-index: 1;
+    left: 0%;
+    top:0%;
+    position: fixed;
+    display:none;
+    opacity: 0.9;
+}
+#registerTable {
+    /* display:none;
+    border-style:solid;
+    height: 100%;
+    width: 50%; */
+    background-color: skyblue;
+    z-index: 2;
+    /* position: fixed; */
+    /* width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    top: 30px; */
+    border: 0px solid;
+    border-radius: 25px;
+    padding: 15px;
+    display:none;
+}
 
+#consultationTable {
+    background-color: skyblue;
+    z-index: 2;
+    /* position: fixed; */
+    /* width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    top: 200px; */
+    border: 0px solid;
+    border-radius: 25px;
+    padding: 15px;
+}
+
+#visitTable {
+    background-color: skyblue;
+    z-index: 2;
+    /* position: fixed; */
+    /* width: 500px;
+    left: 50%;
+    margin-left: -250px;
+    top: 200px; */
+    border: 0px solid;
+    border-radius: 25px;
+    padding: 15px;
+    display:none;
+}
 .mission-table {
     width: 90%;
 }

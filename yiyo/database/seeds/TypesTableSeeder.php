@@ -26,7 +26,7 @@ class TypesTableSeeder extends Seeder
             case 6:
                 return "委託掛號";
             case 7:
-                return "陪診";
+                return "委託出診";
             case 8:
                 return "關懷";
             case 9:

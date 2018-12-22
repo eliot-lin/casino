@@ -12,6 +12,7 @@
         <input id="vipMissionUrl" type="hidden" value="{{ url('missions')}}">
         <input id="executorUrl" name="executorListUrl" type="hidden" value="{{ url('missions/executor') }}">
         <input id="statusUrl" type="hidden" value="{{url('missions/status')}}">
+        <input id = "getHospitalsByRegion" type="hidden" value="{{ url('hospitals/get-hospitals-by-region') }}">
         <input id="messageUrl" type="hidden" value="{{url('call-center/message')}}">
         <input id="progressesUrl" type="hidden" value="{{ url('progresses/') }}">
 
@@ -21,6 +22,84 @@
                 <li><a id="medicalProfile" target="_blank" href="/profile/medical">醫療人員</a></li>
             </ul>
         </span>
+
+        <div id="add">
+            <form style="font-weight:normal;font-size: 18px;">
+                請選擇姓名及身分證:    <select id="list" name="請選擇姓名及身分證" value="請選擇姓名及身分證">
+                    　
+                </select><br>
+                會員編號:   <span id = "card_no"> </span><br><br>
+                <select id="service">
+                　　  <option value="1" selected>諮詢</option>
+                    　<option value="2" >掛號</option>
+                    　<option value="3">出診</option>
+                </select>
+            </form>
+            <div id="registerTable">
+                <form style="font-weight:normal;">
+                    <div class="form-group" style="font-size: 16px;" > <!-- overflow: scroll; --> 
+                        <div style="text-align:center; "><span style="color: gray; font-size: 32px; ">掛號填單</span></div><br>
+                            <span>請選擇掛號醫院：</span><br>
+                                <label for="inputHospitalName" ></label><br>
+                                地區 : 
+                                    <select id="regionSelector" class="input">
+                                        <option value="N">北部</option>
+                                        <option value="C">中部</option>
+                                        <option value="S">南部</option>
+                                        <option value="E">東部</option>
+                                    </select>
+
+                                <br>醫院 : 
+                                    <select name="member" id="hospitalSelector" class="input">
+                                        <option value="">請先選取地區
+                                    </select><br><br>
+                            <span>指定醫師：</span>
+                                <input type="text" class="input" id="drname" placeholder="輸入指定醫師姓名，沒有則填「無」" value="無" required><br><br>
+                            <span>日期：</span>
+                                <input id="date" class="input" type="date" required><br>
+                            <span>診別 :</span><br>
+                                <select id="diagnosis" class="input">
+                                    <optgroup label="診別">
+                                        <option value="1" selected>早診</option>
+                                        <option value="2">午診</option>
+                                        <option value="3">晚診</option>
+                                    </optgroup>
+                                </select><br><br>
+                            <span>症狀：</span><br>
+                                <textarea name="" id="des" class="input" cols="30" rows="10" required></textarea><br><br>
+                            <button id="sub" type="submit" class="pure-button pure-button-primary">提交</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="consultationTable">
+                <form style="font-weight:normal;">
+                    <div class="form-group" style="font-size: 16px;">
+                        <div style="text-align:center; "><span style="color: gray; font-size: 32px; ">諮詢填單</span></div><br>
+                            <span>症狀：</span><br>
+                                <textarea name="" id="des2" class="input" cols="30" rows="10" required></textarea><br><br>
+                            <button id="sub2" type="submit" class="pure-button pure-button-primary">提交</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="visitTable">
+                <form style="font-weight:normal;">
+                    <div class="form-group" style="font-size: 16px;">
+                        <div style="text-align:center; "><span style="color: gray; font-size: 32px; ">出診填單</span></div><br>
+                            <span>日期：</span>
+                                <input id="date3" class="input" name="bdaytime" type="datetime-local" required><br>
+                            <span>出診地點：</span>
+                                <input type="text" class="input" id="address" placeholder="輸入出診地址"><br><br>
+                            <span>症狀：</span><br>
+                                <textarea name="" id="des3" class="input" cols="30" rows="10" required></textarea><br><br>
+                            <button id="sub3" type="submit" class="pure-button pure-button-primary">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <img id="gray" src="{{ asset('images/gray.png') }}">
 
         <div class="container mission-table">
             <h1 class="table-title">任務中心</h1>
@@ -33,10 +112,10 @@
                         <th id="handle3"><input type="checkbox"name="handle-th" id="ownerId-th" value="3">會員編號</th>
                         <th id="handle4"><input type="checkbox"name="handle-th" id="missionType-th" value="4">任務別</th>
                         <th id="handle5"><input type="checkbox"name="handle-th" id="vip-th" value="5">姓名</th>
-                        <th id="handle6"><input type="checkbox"name="handle-th" id="executor-th" value="6">執行人</th>
+                        <!-- <th id="handle6"><input type="checkbox"name="handle-th" id="executor-th" value="6">執行人</th> -->
                         <th id="handle7"><input type="checkbox"name="handle-th" id="status-th" value="7">任務狀態</th>
                         <th id="handle8" class="mission-age"><input type="checkbox"name="handle-th" id="missionAge-th" value="8">務齡</th>
-                        <th id="handle9"><input type="checkbox"name="handle-th" id="message-th" value="9">訊息</th>
+                        <!-- <th id="handle9"><input type="checkbox"name="handle-th" id="message-th" value="9">訊息</th> -->
                     </tr>
                 </thead>
                 <tfoot>
@@ -55,7 +134,6 @@
 
                 <button id="newMission" target="popup" class="btn btn-success">新增任務</button>
                 <button id="delteMission" class="btn btn-danger">刪除任務</button>
-                <button id="reviseMission" target="popup" class="btn btn-warning">修改任務</button>
                 <!-- <button id="refresh"  class="btn btn-info">重新整理</button> -->
             </div>
             
@@ -156,7 +234,7 @@
                             <th>編號</th>
                             <th>任務別</th>
                             <th>VIP</th>
-                            <th>執行人</th>
+                            <!-- <th>執行人</th> -->
                             <th>任務狀態</th>
                             <th>起始時間</th>
                             <th>結束時間</th>
@@ -183,7 +261,7 @@
                     <th>會員編號</th>
                     <th>任務別</th>
                     <th>姓名</th>
-                    <th>執行人</th>
+                    <!-- <th>執行人</th> -->
                     <th>務齡</th>
                 </tr>
             </thead>
