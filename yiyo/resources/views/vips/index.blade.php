@@ -96,7 +96,7 @@
     </div>
 </div>
 
-<img id="gray" src="{{ asset('images/gray.png') }}">
+<img id="gray" style="width:100%;" src="{{ asset('images/gray.png') }}">
 
 
 <div id="inline">

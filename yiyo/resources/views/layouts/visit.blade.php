@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    <body id="bg" background="{{ asset('images/bg.jpg') }}" style="background-size:cover;background-repeat:no-repeat;height:auto;width:auto;">
     <input id = "missionUrl" type="hidden" value = "{{ url('missions') }}">
     <input id = "missionUpdateUrl" type="hidden" value = "{{ url('missions') }}">
     <input id = "name" type="hidden" value = "{{$vip->user->name}}">

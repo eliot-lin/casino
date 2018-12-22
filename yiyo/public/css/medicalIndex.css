@@ -93,7 +93,6 @@ body{
 #gray {
     display:none;
     height: 100%;
-    width: 100%;
     background-color: skyblue;
     z-index: 1;
     left: 0%;

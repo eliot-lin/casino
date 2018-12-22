@@ -27,6 +27,7 @@
                 </div>
                 <ul class="nav navbar-nav">
                     @if (Auth::check())
+                        <body id="bg" background="{{ asset('images/bg.jpg') }}" style="background-size:cover;background-repeat:no-repeat;height:auto;width:auto;">
                         <li class="active"><a href="{{ url('call-centers/index') }}">{{ Auth::user()->name }} - 任務中心</a></li>
                         <!-- <li><a target="_blank" href="#">VIP管理</a></li>
                         <li><a target="_blank" href="#">醫師＆護士</a></li> -->

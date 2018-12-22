@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <body id="bg" background="{{ asset('images/bg.jpg') }}" style="background-size:cover;background-repeat:no-repeat;height:auto;width:auto;">
     <input id = "childIdUrl" type="hidden" value = "{{ url('missions/childId') }}">
     <input id = "allMission" type="hidden" value = "{{ url('missions/allmissions') }}">
     <input id = "missionMethod" type="hidden" value = "{{ $missions[0]->method }}">
