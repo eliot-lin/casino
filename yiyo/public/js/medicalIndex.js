@@ -48,40 +48,20 @@ $(document).ready(function(){
     }
 
     var updateMission = function($id){
-   
+        console.log($id);
         $.ajax({
             url: $('#missionUrl').val() + '/' + $id,
             type: 'PATCH',
             data:JSON.stringify(  {'status_name': "執行中" ,  
+                                   'provider_id': $("#medical_id").val(),
+                                   'provider_name': $("#medical_name").val(),
                                    'status_id': 2} ),
             contentType: 'application/json',
             success: function(response){
                 
                 alert('您已接受此任務');
 
-                $.ajax({
-                    type: 'GET',
-                    url: '/missions',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(missions)
-                    {
-                        var temp, temp1;
-                        $(missions).each(function (index, mission) {
-                            if(mission.id == $id) {
-                                temp = mission.parent_id;
-                                temp1 = mission.method
-                            }
-                        });
-
-                        $(missions).each(function (index, mission) {
-                            if(mission.id != $id && mission.parent_id == temp && mission.method == temp1) 
-                                deleteMission(mission.id);
-                        });
-                    },
-                });
-                getMissions();
+                
             },
             error: function(){
                 console.log('error');
@@ -181,12 +161,13 @@ $(document).ready(function(){
                         ]);
                     }
                     else if(ms.status_name == "執行中") {
+                        console.log(ms.id);
                             acceptMission.push([
                             ms.requester_name,
                             ms.type_name,
                             '<span id = "age'+ ms.id + '">' + ms.issued_at + '</span>',
                             ms.description,
-                            '<input type="button" id="complete'+ ms.id +'" class="' + ms.parent_id +'"value="完成">',
+                            '<input type="button" id="complete'+ ms.id +'" class="' + ms.id +'"value="完成">',
                         ]);
                     }
                 
@@ -206,13 +187,40 @@ $(document).ready(function(){
 
 
     $('body').on('click', 'input[id^=accept]', function(){
-        updateMission(this.id.substr(6, this.id.length));
+        $id = this.id.substr(6, this.id.length);
+
+        $.ajax({
+            type: 'GET',
+            url: '/missions',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(missions)
+            {
+                // update parent_id 資料
+                var temp;
+
+                $(missions).each(function (index, mission) {
+                    if(mission.id == $id) {
+                        temp = mission.parent_id;
+                        updateMission(temp);
+                    }
+                });
+
+                $(missions).each(function (index, mission) {
+                    if(mission.parent_id == temp) 
+                        deleteMission(mission.id);
+                });
+                getMissions();
+            },
+        });
+        
     })
     $('body').on('click', 'input[id^=refuse]', function(){
         deleteMission(this.id.substr(6, this.id.length));
     })
     $('body').on('click', 'input[id^=complete]', function(){
-        deleteMission(this.id.substr(8, this.id.length));
+        console.log($(this).attr("class"));
         completeMission($(this).attr("class"));
     })
     

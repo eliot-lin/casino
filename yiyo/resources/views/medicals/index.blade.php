@@ -11,6 +11,7 @@
 <input id="handleMissionsUrl" name="missionsListUrl" type="hidden" value="{{ url('missions/handle') }}">
 <input id="missionUrl" type="hidden" value="{{ url('missions')}}">
 <input id="medical_id" type="hidden" value="{{ Auth::user()->id }}">
+<input id="medical_name" type="hidden" value="{{ Auth::user()->name }}">
 <!-- <meta http-equiv="refresh" content="3"> -->
 
 <body background="{{ asset('images/true.jpg') }}" style="background-size:cover;background-repeat:no-repeat;height:auto;width:auto;">

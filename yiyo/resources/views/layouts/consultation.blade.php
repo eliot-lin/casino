@@ -41,7 +41,7 @@
                     <h3>地址: {{ $vip->user->address }}</h3>
                 </div>
                 <div class="col-xs-6 col-md-2">
-                    <img src="{{ $vip->user->portrait }}" class="img-rounded" alt="Lights" style="width:87%" >
+                    <img src="{{ asset('images/protrait.jpg') }}" class="img-rounded" alt="Lights" style="width:87%" >
                 </div>
                 <div class="col-xs-6 col-md-2">
                     <img src="{{ asset('default.jpg') }}" id="default" class="img-rounded" alt="Lights" style="width: 91%;" >

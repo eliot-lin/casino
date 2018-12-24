@@ -42,8 +42,8 @@
                     @if (Auth::check())
                         <li><a href="{{ url('logout') }}"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;登出</a></li>
                     @else
-                        <li><a href="{{ url('vips/login') }}">Sign in</a></li>
-                        <li><a href="{{ url('vips/register') }}">Sign up</a></li>
+                        <!-- <li><a href="{{ url('vips/login') }}">Sign in</a></li>
+                        <li><a href="{{ url('vips/register') }}">Sign up</a></li> -->
                     @endif
                 </ul>
             </div>

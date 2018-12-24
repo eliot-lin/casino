@@ -499,7 +499,10 @@
         })
     }
     getComment();
- 
+
+    var url = document.URL;
+    var requester_id = document.URL.substring((document.URL.lastIndexOf('r_id=') + 5), url.indexOf('&&took'));
+    var id = document.URL.substring((document.URL.lastIndexOf('?id=') + 4), url.indexOf('&'));
 
     $('#SeedMission').click(function(){
         
@@ -539,35 +542,52 @@
             var name = $('#name').text();
             name = name.substr(4, name.length);
 
-            //建立委推任務
+            //建立委託任務
             var sub_mission_id;
             $.ajax({
-                url: $('#missionSubUrl').val(),
-                
-                data:JSON.stringify({
-                    'id': $('#missionId').val(),
-                    'provider_id': $('input[name^=choose]:checked').val(),
-                    'provider_name': $('input[name^=choose]:checked').data('doctor'),
-                    'type_id': 6,//委託掛號
-                    'status_id': 6,//等待中
-                    'issued_at': new Date().getTime() / 1000,
-                    'vip_id': $('#vips_id').val(),
-                    'requester_name': name,
-                    'status_name': "等待中",
-                    'date': $('#date').val() + ' ' + strUser3,
-                    'type_name': "委託掛號",
-                    'description': temp,
-                }),
-                type: 'post',
-                async: false,
-                contentType: 'application/json',
-                success: function(response){
-                    sub_mission_id = response.sub.id;
+                type: 'GET',
+                url: '/vips',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                error: function(){
-                    console.log('error');
-                    console.log(Date.parse($('#date').val()));
-                }
+                success: function(vips)
+                {
+                    var rid;
+                    $(vips).each(function (index, vip) {
+                        if(requester_id == vip.id) 
+                            rid = vip.user_id;
+                    });
+                    console.log(rid);
+                    $.ajax({
+                        url: $('#missionSubUrl').val(),
+                        
+                        data:JSON.stringify({
+                            'id': $('#missionId').val(),
+                            'requester_id': rid,
+                            'provider_id': $('input[name^=choose]:checked').val(),
+                            'provider_name': $('input[name^=choose]:checked').data('doctor'),
+                            'type_id': 6,//委託掛號
+                            'status_id': 6,//等待中
+                            'issued_at': new Date().getTime() / 1000,
+                            'vip_id': $('#vips_id').val(),
+                            'requester_name': name,
+                            'status_name': "等待中",
+                            'date': $('#date').val() + ' ' + strUser3,
+                            'type_name': "委託掛號",
+                            'description': temp,
+                        }),
+                        type: 'post',
+                        async: false,
+                        contentType: 'application/json',
+                        success: function(response){
+                            sub_mission_id = response.sub.id;
+                        },
+                        error: function(){
+                            console.log('error');
+                            console.log(Date.parse($('#date').val()));
+                        }
+                    });
+                },
             });
 
             var doc_token = getDoctorDeviceToken($('#docuser').val());

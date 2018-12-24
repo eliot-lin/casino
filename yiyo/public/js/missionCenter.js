@@ -527,7 +527,6 @@ $(document).ready(function(){
                     if( missions[i].type.id == 0)continue;
                     trs.push(
                         [
-                        
                             '<input type = "radio" name = "choose" data-id = "'+missions[i].id+'"id="choose' + missions[i].id+'" value = "'+ missions[i].id +'" data-requester_id = "'+missions[i].requester.member.id+'">',
                             '' + missions[i].id + '',
                             '<span id = "owner' + missions[i].id + '" data-id = "'+missions[i].requester.member.user_id+'">' + missions[i].requester.name + '</span>',
@@ -932,6 +931,7 @@ $.ajax({
             var id = $(this).find('option:selected').val();
             var name = $(this).find('option:selected').text();
             name = name.substring(0, name.indexOf('、'));
+            console.log(id, name);
 
             $(users).each(function (index, user) {
                 if(user.id == id) {
@@ -1039,6 +1039,7 @@ $.ajax({
                     }
                 });
             });
+            // $('#careTable').DataTable().rows.add(trs).draw(false);
         });
 
         $("#service").change(function() {

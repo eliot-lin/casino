@@ -203,7 +203,7 @@
 
                   <div class="form-group">
                       <label for="inputReligion">*宗教信仰</label> <b id="nRelig" class="need">*請輸入宗教信仰，可填無</b>
-                          <input type="text" class="form-control" id="inputReligion" placeholder="宗教信仰" required>
+                          <input type="text" value="無" class="form-control" id="inputReligion" placeholder="宗教信仰" required>
                   </div>
                 
                   <!-- <div class="form-group">

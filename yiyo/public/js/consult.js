@@ -225,6 +225,10 @@
         $("input[name=chooseDoctor]").prop("checked", false);
     });
 
+    var url = document.URL;
+    var requester_id = document.URL.substring((document.URL.lastIndexOf('r_id=') + 5), url.indexOf('&&took'));
+    var id = document.URL.substring((document.URL.lastIndexOf('?id=') + 4), url.indexOf('&'));
+
     //發生任務請求給醫生們
     $('#SeedMission').click(function(){
         var zone=[];
@@ -243,32 +247,48 @@
         if($('input:checked').val() != undefined)
         {
             $.ajax({
-                url: $('#missionSubUrl').val(),
-                
-                data:JSON.stringify({
-                    'id': $('#missionId').val(),
-                    'provider_id': $('input[name^=chooseDoctor]:checked').val(),
-                    'provider_name': $('input[name^=chooseDoctor]:checked').data('doctor'),
-                    'type_id': 5,//委託諮詢
-                    'status_id': 6,//等待中
-                    'issued_at': new Date().getTime() / 1000,
-                    'requester_id': $('#vipId').val(),
-                    'requester_name': $('#vipName').val(),
-                    'status_name': "等待中",
-                    'type_name': "諮詢",
-                    'description': $('#comment').val(),
-                    'vip_card_no': "123",
-                }),
-                type: 'post',
-                async: false,
-                contentType: 'application/json',
-                success: function(response){
-                    console.log("success");
+                type: 'GET',
+                url: '/vips',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                error: function(){
-                    console.log('error');
-                    console.log($("#card").val());
-                }
+                success: function(vips)
+                {
+                    var rid;
+                    $(vips).each(function (index, vip) {
+                        if(requester_id == vip.id) 
+                            rid = vip.user_id;
+                    });
+                    console.log(rid);
+                    $.ajax({
+                        url: $('#missionSubUrl').val(),
+                        
+                        data:JSON.stringify({
+                            'id': $('#missionId').val(),
+                            'provider_id': $('input[name^=chooseDoctor]:checked').val(),
+                            'provider_name': $('input[name^=chooseDoctor]:checked').data('doctor'),
+                            'type_id': 5,//委託諮詢
+                            'status_id': 6,//等待中
+                            'issued_at': new Date().getTime() / 1000,
+                            'requester_id': rid,
+                            'requester_name': $('#vipName').val(),
+                            'status_name': "等待中",
+                            'type_name': "諮詢",
+                            'description': $('#comment').val(),
+                            'vip_card_no': "123",
+                        }),
+                        type: 'post',
+                        async: false,
+                        contentType: 'application/json',
+                        success: function(response){
+                            console.log("success");
+                        },
+                        error: function(){
+                            console.log('error');
+                            console.log($("#card").val());
+                        }
+                    });
+                },
             });
 
             $.each( zone, function( i, val ) {

@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="col-xs-6 col-md-2 col-lg-2" id="imagepos" >
-                    <img src="{{$vip->user->portrait}}" class="img-rounded" alt="Lights" style="width:80%" >
+                    <img src="{{ asset('images/protrait.jpg') }}" class="img-rounded" alt="Lights" style="width:80%" >
                 </div>
                 <div class="col-xs-6 col-md-6 col-lg-5">
                     <div class="passHptl">
