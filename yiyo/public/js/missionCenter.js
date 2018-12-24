@@ -443,6 +443,8 @@ $(document).ready(function(){
     $('body').on('change', 'input[id^="_choose"]', function(){
         console.log('check');
         console.log($(this).data('id'));
+        selected_missionID2 = $(this).data('id');
+
         getCare($(this).data('id'));
     })
     $('body').on('click', 'span[id^="_vip"]', function () {
@@ -742,6 +744,13 @@ $(document).ready(function(){
             // $('#missionsTable').DataTable().clear();
             // getMissionList();
         }
+        else if($('input[id^=_choose]:checked').val() != undefined)
+        {
+            console.log('MID' + selected_missionID);
+            deletMission(selected_missionID2);
+            // $('#missionsTable').DataTable().clear();
+            // getMissionList();
+        }
         else
             alert("Error!請選擇任務或VIP!");
     });
@@ -758,6 +767,7 @@ var deletMission = function($id){
             console.log('delete success');
             alert("資料刪除成功！");
             $('#missionsTable').DataTable().clear();
+            $('#careTable').DataTable().clear();
             getMissionList();
         },
         error: function(){

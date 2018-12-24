@@ -274,7 +274,7 @@
                             'requester_name': $('#vipName').val(),
                             'status_name': "等待中",
                             'type_name': "諮詢",
-                            'description': $('#comment').val(),
+                            'description': $('#comment').val() + $('.cpTxtarea').val(),
                             'vip_card_no': "123",
                         }),
                         type: 'post',
