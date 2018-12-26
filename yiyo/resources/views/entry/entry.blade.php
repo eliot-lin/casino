@@ -49,6 +49,7 @@
             </ul>
             <a href="#0" class="cd-close-menu">Close<span></span></a>
         </nav>
+		<!-- <body id="bg" background="{{ asset('images/entry/entry.jpg') }}" style="background-size:cover;background-repeat:no-repeat;height:auto;width:100%;"> -->
 
         <!--Home page style-->
         <header id="home" class="home home-main-content">
@@ -59,7 +60,7 @@
 					<div class="div-menu">
 						<header class="cd-header">
 							<div id="cd-logo">
-								<a href=""><img src="{{ asset('images/entry/logo.png') }}" alt="Logo"></a>
+								<!-- <a href=""><img src="{{ asset('images/entry/logo.png') }}" alt="Logo"></a> -->
 							</div>
 							<a class="cd-menu-trigger" href="#main-nav"><span></span></a>
 						</header>
@@ -75,10 +76,11 @@
 								</div>
 							</div>
 						</div>
+
 							
-						<div class="col-sm-6 col-xs-12">
+						<div class="col-sm-6 col-xs-12" >
 							<div class="home-photo">
-								<img src="{{ asset('images/entry/new.png') }}" alt="Women" />
+								<!-- <img src="{{ asset('images/entry/new.png') }}" alt="Women" /> -->
 							</div>
 						</div>
 							
@@ -644,20 +646,20 @@
 
 
         <script src="{{ asset('js/entry/vendor/jquery-1.11.2.min.js') }}"></script>
-			<!-- {{ asset('js/entry/jquery-1.11.2.min.js.js') }} -->
         <script src="{{ asset('js/entry/vendor/bootstrap.min.js') }}"></script>
-	<!-- {{ asset('js/entry/bootstrap.min.js.js') }} -->
         <script src="{{ asset('js/entry/plugins.js') }}"></script>
-			<!-- {{ asset('js/entry/plugins.js') }} -->
         <script src="{{ asset('js/entry/jquery.mixitup.min.js') }}"></script>
-			<!-- {{ asset('js/entry/jquery.mixitup.min.js') }} -->
 		<script src=" {{ asset('js/entry/jquery.easypiechart.min.js') }} "></script>
-			<!-- {{ asset('js/entry/jquery.easypiechart.min.js') }} -->
 		<script src="{{ asset('js/entry/jquery.magnific-popup.js') }}"></script>
-			<!-- {{ asset('js/entry/jquery.magnific-popup.js') }} -->
         <script src="{{ asset('js/entry/modernizr.js') }}"></script>
-			<!-- {{ asset('js/entry/modernizr.js') }} -->
         <script src="{{ asset('js/entry/main.js') }}"></script>
+			<!-- {{ asset('js/entry/jquery-1.11.2.min.js.js') }} -->
+	<!-- {{ asset('js/entry/bootstrap.min.js.js') }} -->
+			<!-- {{ asset('js/entry/plugins.js') }} -->
+			<!-- {{ asset('js/entry/jquery.mixitup.min.js') }} -->
+			<!-- {{ asset('js/entry/jquery.easypiechart.min.js') }} -->
+			<!-- {{ asset('js/entry/jquery.magnific-popup.js') }} -->
+			<!-- {{ asset('js/entry/modernizr.js') }} -->
 			<!-- {{ asset('js/entry/main.js') }} -->
     </body>
 </html>
