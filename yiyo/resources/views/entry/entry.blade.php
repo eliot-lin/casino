@@ -126,8 +126,8 @@
 								<!-- <i class="fa fa-pencil"></i> -->
 							</div>
                     		<div class="about-content">
-                    			<h5>陪診<span><i class="fa fa-long-arrow-right"></i></span></h5>
-                    			<p>家中的長輩、小孩，專業的陪診團隊，給您的家人最細膩的照顧。</p>
+                    			<h5>出診<span><i class="fa fa-long-arrow-right"></i></span></h5>
+                    			<p>家中的長輩、小孩，專業的出診團隊，親自到府上為您診斷，給您的家人最細膩的照顧。</p>
                     		</div>
                     	</div>
 						
