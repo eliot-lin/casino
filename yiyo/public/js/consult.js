@@ -132,6 +132,7 @@
 
        updateMission($('#missionId').val() ,{
             'status_id': 2,
+            'status_name': "執行中",
        });
 
         if(zone.length > 2 || zone.length == 0 )
