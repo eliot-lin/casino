@@ -16,6 +16,6 @@
             <input class="form-control" name="password" id="password" type="password" required>
         </div>
         <div class="form-group"></div>
-        <button class="btn btn-default" type="submit" id="login" style="width:100%;margin-bottom:10px;background-color:rgb(106,176,209);">Button</button><a href="#" id="linkas" style="font-size:12px;margin:auto;margin-left:0;margin-right:0;margin-bottom:0;margin-top:0;padding-left:0;padding-right:0;color:rgb(177,151,70);"></a>
+        <button class="btn btn-default" type="submit" id="login" style="width:100%;margin-bottom:10px;background-color:rgb(106,176,209);">登入</button><a href="#" id="linkas" style="font-size:12px;margin:auto;margin-left:0;margin-right:0;margin-bottom:0;margin-top:0;padding-left:0;padding-right:0;color:rgb(177,151,70);"></a>
     </form>
 @endsection
