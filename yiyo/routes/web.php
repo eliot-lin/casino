@@ -13,7 +13,7 @@
 
 //入口網站
 route::get('/', function(){
-    return view('entry.entry');
+    return view('vips.login');
 });
 
 /* Authentication */
