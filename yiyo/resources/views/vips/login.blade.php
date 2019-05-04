@@ -6,7 +6,7 @@
 @section('content')
     <form id="form" style="font-family:Quicksand, sans-serif;background-color:rgba(44,40,52,0.73);width:320px;padding:40px;" method="post" action="{{ url('vips/login') }}">
         {{ csrf_field() }}
-        <h1 id="head" style="color:rgb(193,166,83);">Login form</h1>
+        <h1 id="head" style="color:rgb(193,166,83);">VIP會員登入</h1>
         <div>
             <img class="img-rounded img-responsive" src="{{ asset('images/logo.png') }}" id="image" style="width:auto;height:auto;">
         </div>
