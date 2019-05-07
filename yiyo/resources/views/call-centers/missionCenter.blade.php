@@ -126,11 +126,11 @@
         
             <div id="functionBar">
                 <input id="registerUrl" type="hidden" value="{{'register'}}">
-                <button id="btnRegister" class="btn btn-primary">掛號</button>
+                <!-- <button id="btnRegister" class="btn btn-primary">掛號</button> -->
                 <input id="visitUrl" type="hidden" value="{{'visit'}}">
-                <button id="btnVisit" class="btn btn-primary">出診</button>
+                <!-- <button id="btnVisit" class="btn btn-primary">出診</button> -->
                 <input id="consultUrl" type="hidden" value="{{'consultation'}}">
-                <button id="btnConsult" class="btn btn-primary">諮詢</button>
+                <!-- <button id="btnConsult" class="btn btn-primary">諮詢</button> -->
 
                 <button id="newMission" target="popup" class="btn btn-success">新增任務</button>
                 <button id="delteMission" class="btn btn-danger">刪除任務</button>
